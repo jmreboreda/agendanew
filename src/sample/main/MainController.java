@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import sample.ViewLoader;
 import sample.events.SearchPersonsEvent;
+import sample.personinput.PersonInput;
 import sample.phoneinput.PhoneInput;
 import sample.personsoutput.PersonsOutput;
 import sample.personssearch.PersonsSearch;
@@ -22,6 +23,8 @@ public class MainController extends HBox {
     private PersonsSearch personsSearch;
     @FXML
     private PersonsOutput personsOutput;
+    @FXML
+    PersonInput personInput;
     @FXML
     private PhoneInput phoneInput;
 
