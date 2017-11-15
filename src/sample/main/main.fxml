@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import sample.personsoutput.PersonsOutput?>
+<?import sample.personssearch.PersonsSearch?>
+<?import sample.phonesoutput.PhonesOutput?>
+
+<?import sample.phoneinput.PhoneInput?>
+<fx:root type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <PersonsSearch fx:id="personsSearch" />
+         <PersonsOutput fx:id="personsOutput" />
+         <HBox />
+      </VBox>
+      <VBox>
+            <PhonesOutput fx:id="phonesOutput" />
+            <PhoneInput fx:id="phoneInput" />
+      </VBox>
+   </children>
+</fx:root>
