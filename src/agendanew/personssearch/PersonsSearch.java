@@ -1,12 +1,12 @@
-package sample.personssearch;
+package agendanew.personssearch;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import sample.ViewLoader;
-import sample.events.SearchPersonsEvent;
+import agendanew.ViewLoader;
+import agendanew.events.SearchPersonsEvent;
 
 import java.util.logging.Logger;
 
@@ -29,7 +29,7 @@ public class PersonsSearch extends AnchorPane {
     }
 
     private void onPersonNamePatternChanged(KeyEvent keyEvent) {
-        logger.info("click on lambda button! let's handle handler!");
+        logger.info("Key released in personNamePattern! let's handle handler!");
         final String pattern = personNamePattern.getText();
         final SearchPersonsEvent searchPersonsEvent = new SearchPersonsEvent(pattern);
         handler.handle(searchPersonsEvent);
@@ -37,7 +37,7 @@ public class PersonsSearch extends AnchorPane {
 
 
 
-    public void setOnPatternChanged(EventHandler<SearchPersonsEvent> handler) {
+    public void setHandlerOnNamePatternChanged(EventHandler<SearchPersonsEvent> handler) {
         this.handler = handler;
     }
 

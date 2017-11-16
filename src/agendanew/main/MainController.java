@@ -1,15 +1,17 @@
-package sample.main;
+package agendanew.main;
 
+import agendanew.utilities.BorderedTitledPane;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
-import sample.ViewLoader;
-import sample.events.SearchPersonsEvent;
-import sample.personinput.PersonInput;
-import sample.phoneinput.PhoneInput;
-import sample.personsoutput.PersonsOutput;
-import sample.personssearch.PersonsSearch;
+import agendanew.ViewLoader;
+import agendanew.events.SearchPersonsEvent;
+import agendanew.personinput.PersonInput;
+import agendanew.phoneinput.PhoneInput;
+import agendanew.personsoutput.PersonsOutput;
+import agendanew.personssearch.PersonsSearch;
+import javafx.scene.layout.Pane;
 
 import java.util.logging.Logger;
 
@@ -37,6 +39,10 @@ public class MainController extends HBox {
     @FXML
     public void initialize() {
 
+        Pane pane = new Pane();
+        BorderedTitledPane btp = new BorderedTitledPane("Datos del personal", pane);
+        this.getChildren().add(btp);
+
         final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
             @Override
             public void handle(SearchPersonsEvent event) {
@@ -45,6 +51,6 @@ public class MainController extends HBox {
             }
         };
 
-        personsSearch.setOnPatternChanged(handler);
+        personsSearch.setHandlerOnNamePatternChanged(handler);
     }
 }

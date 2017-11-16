@@ -1,4 +1,4 @@
-package sample;
+package agendanew;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

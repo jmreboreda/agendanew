@@ -1,11 +1,11 @@
-package sample.personsoutput;
+package agendanew.personsoutput;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import sample.ViewLoader;
+import agendanew.ViewLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,11 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     @FXML
-    private ListView personWhoMeetNamePattern;
+    private ListView<String> personWhoMeetNamePattern;
 
-    private ObservableList<String> listPersonsWithPattern;
+    private ObservableList<String> listPersonsWhoMatchPattern;
+
+
 
     public PersonsOutput() {
         ViewLoader.load(this, "personsoutput/personsoutput.fxml");
@@ -27,24 +29,35 @@ public class PersonsOutput extends AnchorPane {
     public void refresh(String pattern) {
         if(pattern.isEmpty()){
             logger.info("ListView clearing ...");
-            listPersonsWithPattern.clear();
+            listPersonsWhoMatchPattern.clear();
         }
         else {
             logger.info("refreshing ListView ...");
-            listPersonsWithPattern = retrievePersonsWithPattern(pattern);
+            listPersonsWhoMatchPattern = retrievePersonsWhoMatchPattern(pattern);
         }
-        personWhoMeetNamePattern.setItems(listPersonsWithPattern);
+        personWhoMeetNamePattern.setItems(listPersonsWhoMatchPattern);
     }
 
-    private ObservableList<String> retrievePersonsWithPattern(String pattern){
+    private ObservableList<String> retrievePersonsWhoMatchPattern(String pattern){
 
         List<String> personsList = new ArrayList<>();
+        personsList.add("Bohr, Niels");
         personsList.add("Einstein, Albert");
         personsList.add("Feynman, Richard P.");
         personsList.add("Gell-Mann, Murray");
 
         return FXCollections.observableList(personsList);
     }
+
+//    personWhoMeetNamePattern
+//            .getSelectionModel().selectedItemProperty()
+//    .addListener(new ChangeListener<String>() {
+//        @Override
+//        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//            System.out.println("ListView selection changed from oldValue = "
+//                    + oldValue + " to newValue = " + newValue);
+//        }
+//    });
 
 
 }

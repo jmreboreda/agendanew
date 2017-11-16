@@ -1,9 +1,9 @@
-package sample.phonesoutput;
+package agendanew.phonesoutput;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import sample.ViewLoader;
+import agendanew.ViewLoader;
 
 public class PhonesOutput extends AnchorPane {
 

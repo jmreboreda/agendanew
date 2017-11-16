@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import sample.personsoutput.PersonsOutput?>
-<?import sample.personssearch.PersonsSearch?>
-<?import sample.phoneinput.PhoneInput?>
-<?import sample.phonesoutput.PhonesOutput?>
-<?import sample.personinput.PersonInput?>
+<?import agendanew.personsoutput.PersonsOutput?>
+<?import agendanew.personssearch.PersonsSearch?>
+<?import agendanew.phoneinput.PhoneInput?>
+<?import agendanew.phonesoutput.PhonesOutput?>
+<?import agendanew.personinput.PersonInput?>
 
 <fx:root type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
