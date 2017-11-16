@@ -20,6 +20,7 @@ public class PersonsSearch extends AnchorPane {
     private EventHandler<SearchPersonsEvent> handler;
 
     public PersonsSearch() {
+
         ViewLoader.load(this, "personssearch/personssearch.fxml");
     }
 

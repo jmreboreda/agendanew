@@ -1,5 +1,6 @@
 package agendanew.main;
 
+import agendanew.phonesoutput.PhonesOutput;
 import agendanew.utilities.BorderedTitledPane;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +22,9 @@ public class MainController extends HBox {
 
     private static final Logger logger = Logger.getLogger(MainController.class.getSimpleName());
 
+    private static final String PERSONS = "Personas: apellidos y nombre";
+    private static final String PHONES = "Teléfonos: número y tipo";
+
     public final Parent parent;
 
     @FXML
@@ -28,7 +32,9 @@ public class MainController extends HBox {
     @FXML
     private PersonsOutput personsOutput;
     @FXML
-    PersonInput personInput;
+    private PersonInput personInput;
+    @FXML
+    private PhonesOutput phonesOutput;
     @FXML
     private PhoneInput phoneInput;
 
@@ -41,16 +47,7 @@ public class MainController extends HBox {
     @FXML
     public void initialize() {
 
-        Pane pane = new Pane();
-        BorderedTitledPane btp = new BorderedTitledPane("Datos del personal", pane);
-        VBox vbox = new VBox();
-        vbox.setPadding(new Insets(15, 12, 15, 12));
-
-        vbox.getChildren().add(personsSearch);
-        vbox.getChildren().add(personsOutput);
-        btp.getChildren().add(vbox);
-        this.getChildren().add(btp);
-
+        showUI();
 
         final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
             @Override
@@ -61,5 +58,31 @@ public class MainController extends HBox {
         };
 
         personsSearch.setHandlerOnNamePatternChanged(handler);
+    }
+
+    private void showUI(){
+
+        /* Persons */
+        Pane panePersons = new Pane();
+        BorderedTitledPane btpPersons = new BorderedTitledPane(PERSONS, panePersons);
+
+        VBox vboxPersons = new VBox();
+        vboxPersons.setPadding(new Insets(15, 12, 15, 12));
+        vboxPersons.getChildren().add(personsSearch);
+        vboxPersons.getChildren().add(personsOutput);
+        vboxPersons.getChildren().add(personInput);
+        btpPersons.getChildren().add(vboxPersons);
+        this.getChildren().add(btpPersons);
+
+        /* Phones */
+        Pane panePhones = new Pane();
+        BorderedTitledPane btpPhones = new BorderedTitledPane(PHONES, panePhones);
+
+        VBox vboxPhones = new VBox();
+        vboxPhones.setPadding(new Insets(15, 12, 15, 12));
+        vboxPhones.getChildren().add(phonesOutput);
+        vboxPhones.getChildren().add(phoneInput);
+        btpPhones.getChildren().add(vboxPhones);
+        this.getChildren().add(btpPhones);
     }
 }
