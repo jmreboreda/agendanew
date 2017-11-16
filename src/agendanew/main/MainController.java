@@ -3,6 +3,7 @@ package agendanew.main;
 import agendanew.utilities.BorderedTitledPane;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import agendanew.ViewLoader;
@@ -12,6 +13,7 @@ import agendanew.phoneinput.PhoneInput;
 import agendanew.personsoutput.PersonsOutput;
 import agendanew.personssearch.PersonsSearch;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.util.logging.Logger;
 
@@ -41,7 +43,14 @@ public class MainController extends HBox {
 
         Pane pane = new Pane();
         BorderedTitledPane btp = new BorderedTitledPane("Datos del personal", pane);
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(15, 12, 15, 12));
+
+        vbox.getChildren().add(personsSearch);
+        vbox.getChildren().add(personsOutput);
+        btp.getChildren().add(vbox);
         this.getChildren().add(btp);
+
 
         final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
             @Override

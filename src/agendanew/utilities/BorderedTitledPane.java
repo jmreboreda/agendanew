@@ -12,7 +12,7 @@ public class BorderedTitledPane extends StackPane {
             Label title = new Label(" " + titleString + " ");
             title.getStyleClass().add("bordered-titled-title");
             StackPane.setMargin(title, new Insets(0, 25, 0, 0));
-            StackPane.setAlignment(title, Pos.TOP_RIGHT);
+            StackPane.setAlignment(title, Pos.TOP_LEFT);
 
             StackPane contentPane = new StackPane();
             contentPane.getChildren().add(content);
