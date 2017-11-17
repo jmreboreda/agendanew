@@ -1,11 +1,9 @@
 package agendanew;
 
-import agendanew.utilities.BorderedTitledPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import agendanew.main.MainController;
+import agendanew.controllers.MainController;
 
 public class App extends Application {
 
@@ -19,17 +17,6 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-//    private GridPane buildCustomGridPane() throws IOException {
-//
-//        GridPane gridPane = new GridPane();
-//
-//        FXMLLoader loaderPersonListView = new FXMLLoader(getClass().getResource(PERSON_LIST_VIEW));
-//        loaderPersonListView.setController(new MainController());
-//        gridPane.add(loaderPersonListView.load(), 0,0);
-//
-//        return gridPane;
-//    }
 
     public static void main(String[] args) {
         launch(args);

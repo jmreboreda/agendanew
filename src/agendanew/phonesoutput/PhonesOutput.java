@@ -37,7 +37,6 @@ public class PhonesOutput extends AnchorPane {
             logger.info("refreshing TableView phones ...");
             ObservableList<String> phonesOL = FXCollections.observableList(phonesList);
             phones.setItems(phonesOL);
-            logger.info("Teléfonos: " + phonesOL);
         }
     }
 }

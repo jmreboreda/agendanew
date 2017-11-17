@@ -1,4 +1,4 @@
-package agendanew.main;
+package agendanew.controllers;
 
 import agendanew.events.ShowPhonesEvent;
 import agendanew.phonesoutput.PhonesOutput;
@@ -41,7 +41,7 @@ public class MainController extends HBox {
 
 
     public MainController() {
-        this.parent = ViewLoader.load(this, "main/main.fxml");
+        this.parent = ViewLoader.load(this, "main.fxml");
 
     }
 
@@ -76,7 +76,6 @@ public class MainController extends HBox {
 
     private void showUI(){
 
-        /* Persons */
         HBox hbox = new HBox();
         Pane panePersons = new Pane();
         BorderedTitledPane btpPersons = new BorderedTitledPane(SCHEDULE, panePersons);

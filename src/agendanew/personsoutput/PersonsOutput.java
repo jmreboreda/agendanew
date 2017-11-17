@@ -56,6 +56,9 @@ public class PersonsOutput extends AnchorPane {
         personsList.add("Einstein, Albert");
         personsList.add("Feynman, Richard P.");
         personsList.add("Gell-Mann, Murray");
+        personsList.add("Higgs, Peter W.");
+        personsList.add("Nambu, Yoichiro ");
+        personsList.add("Thorne, Kip");
 
         return FXCollections.observableList(personsList);
     }
