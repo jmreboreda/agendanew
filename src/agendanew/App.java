@@ -14,7 +14,7 @@ public class App extends Application {
         final MainController mainController = new MainController();
         final Scene scene = new Scene(mainController.parent);
         scene.getStylesheets().add(getClass().getResource("utilities/bordered_titled_pane.css").toExternalForm());
-        primaryStage.setTitle("Agenda telefónica");
+        primaryStage.setTitle("Gestoría MOLDES - María Elena González Moldes");
 
         primaryStage.setScene(scene);
         primaryStage.show();
