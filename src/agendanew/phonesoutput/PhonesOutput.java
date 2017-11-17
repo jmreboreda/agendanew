@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,6 +20,8 @@ public class PhonesOutput extends AnchorPane {
 
     @FXML
     private TableView<String> phones;
+    @FXML
+    private TableColumn phoneNumber;
 
     private EventHandler<ShowPhonesEvent> handler;
 
@@ -34,7 +37,6 @@ public class PhonesOutput extends AnchorPane {
         else {
             logger.info("refreshing TableView phones ...");
             ObservableList<String> phonesOL = FXCollections.observableList(phonesList);
-            phones.setEditable(true);
             phones.setItems(phonesOL);
             logger.info("Teléfonos: " + phonesOL);
         }

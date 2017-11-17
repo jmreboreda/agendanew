@@ -34,7 +34,7 @@ public class PersonsOutput extends AnchorPane {
     public void initialize() {
 
         personWhoMeetNamePattern.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> showPhonesOnSelectPerson());
+                .addListener((observable, oldValue, newValue) -> showPhonesOnSelectPerson(newValue));
     }
 
     public void refresh(String pattern) {
@@ -60,7 +60,9 @@ public class PersonsOutput extends AnchorPane {
         return FXCollections.observableList(personsList);
     }
 
-    private void showPhonesOnSelectPerson(){
+    private void showPhonesOnSelectPerson(String newValue){
+
+        logger.info("Selected person changed to -> " + newValue);
 
         List<String> phonesList = new ArrayList<>();
         phonesList.add("652321612");
@@ -74,17 +76,5 @@ public class PersonsOutput extends AnchorPane {
     public void setHandlerOnShowPhones(EventHandler<ShowPhonesEvent> handler){
         this.handler = handler;
     }
-
-
-//    personWhoMeetNamePattern
-//            .getSelectionModel().selectedItemProperty()
-//    .addListener(new ChangeListener<String>() {
-//        @Override
-//        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//            System.out.println("ListView selection changed from oldValue = "
-//                    + oldValue + " to newValue = " + newValue);
-//        }
-//    });
-
 
 }
