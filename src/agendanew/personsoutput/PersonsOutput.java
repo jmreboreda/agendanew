@@ -65,9 +65,13 @@ public class PersonsOutput extends AnchorPane {
         logger.info("Selected person changed to -> " + newValue);
 
         List<String> phonesList = new ArrayList<>();
-        phonesList.add("652321612");
-        phonesList.add("660250639");
-
+        if(newValue == null){
+            phonesList.clear();
+        }
+        else {
+            phonesList.add("652321612");
+            phonesList.add("660250639");
+        }
         final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
         handler.handle(showPhonesEvent);
 

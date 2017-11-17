@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -19,9 +20,7 @@ public class PhonesOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PhonesOutput.class.getSimpleName());
 
     @FXML
-    private TableView<String> phones;
-    @FXML
-    private TableColumn phoneNumber;
+    private ListView<String> phones;
 
     private EventHandler<ShowPhonesEvent> handler;
 
@@ -40,6 +39,5 @@ public class PhonesOutput extends AnchorPane {
             phones.setItems(phonesOL);
             logger.info("Teléfonos: " + phonesOL);
         }
-
     }
 }
