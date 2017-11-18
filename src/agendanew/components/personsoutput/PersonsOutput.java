@@ -1,4 +1,4 @@
-package agendanew.personsoutput;
+package agendanew.components.personsoutput;
 
 import agendanew.events.RemovePersonStateEvent;
 import agendanew.events.ShowPhonesEvent;
@@ -19,7 +19,7 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     private EventHandler<ShowPhonesEvent> handler;
-    private EventHandler<RemovePersonStateEvent> handlerRemovePersonButtonState;
+    private EventHandler<RemovePersonStateEvent> handlerStateOfPersonRemoveButton;
 
     @FXML
     private ListView<String> personWhoMeetNamePattern;
@@ -28,7 +28,7 @@ public class PersonsOutput extends AnchorPane {
 
 
     public PersonsOutput() {
-        ViewLoader.load(this, "personsoutput/personsoutput.fxml");
+        ViewLoader.load(this, "components/personsoutput/personsoutput.fxml");
     }
 
     @FXML
@@ -74,11 +74,11 @@ public class PersonsOutput extends AnchorPane {
         if(newValue == null){
             phonesList.clear();
             RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(false);
-            handlerRemovePersonButtonState.handle(removePersonStateEvent);
+            handlerStateOfPersonRemoveButton.handle(removePersonStateEvent);
         }
         else {
             RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(true);
-            handlerRemovePersonButtonState.handle(removePersonStateEvent);
+            handlerStateOfPersonRemoveButton.handle(removePersonStateEvent);
             phonesList.add("652321612");
             phonesList.add("660250639");
             if(newValue.contains("Feynman") || newValue.contains("Bohr")){
@@ -95,7 +95,7 @@ public class PersonsOutput extends AnchorPane {
         this.handler = handler;
     }
 
-    public void setHandlerORemovePersonButtonState(EventHandler<RemovePersonStateEvent> handler){
-        this.handlerRemovePersonButtonState = handler;}
+    public void setHandlerOnStateRemovePersonButton(EventHandler<RemovePersonStateEvent> handler){
+        this.handlerStateOfPersonRemoveButton = handler;}
 
 }

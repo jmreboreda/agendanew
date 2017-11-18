@@ -1,4 +1,4 @@
-package agendanew.phoneinput;
+package agendanew.components.phoneinput;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,22 +15,22 @@ public class PhoneInput extends HBox {
 
 
     @FXML
-    private TextField numPhone;
+    private TextField phoneNumber;
     @FXML
-    private Button addPhone;
+    private Button phoneAddButton;
 
     public PhoneInput() {
-        ViewLoader.load(this, "phoneinput/phoneinput.fxml");
-        addPhone.setOnMouseClicked(this::onAddPhone);
+        ViewLoader.load(this, "components/phoneinput/phoneinput.fxml");
+        phoneAddButton.setOnMouseClicked(this::onAddPhone);
 
     }
 
     private void onAddPhone(MouseEvent event){
         String number = "none!!";
-        if(!numPhone.getText().isEmpty()){
-            number = numPhone.getText();
+        if(!phoneNumber.getText().isEmpty()){
+            number = phoneNumber.getText();
         }
-        logger.info("AddPhone button clicked ... and the phone number to add is: " + number);
+        logger.info("phoneAddButton clicked ... and the phone number to add is: " + number);
 
     }
 }

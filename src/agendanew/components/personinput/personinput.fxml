@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="299.0" type="GridPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="159.0" prefWidth="300.0" type="GridPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="138.0" />
@@ -21,27 +21,27 @@
    <children>
       <TextField fx:id="apellido1" promptText="Apellido 1">
          <GridPane.margin>
-            <Insets left="5.0" />
+            <Insets />
          </GridPane.margin>
       </TextField>
       <TextField fx:id="apellido2" promptText="Apellido 2" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets left="5.0" />
+            <Insets />
          </GridPane.margin>
       </TextField>
       <TextField fx:id="nombre" promptText="Nombre" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets left="5.0" />
+            <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="addPersonButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.0" text="Añadir persona" textAlignment="CENTER" textFill="#284304" wrapText="true" GridPane.rowIndex="3">
+      <Button fx:id="personAddButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.0" text="Añadir persona" textAlignment="CENTER" textFill="#044207" wrapText="true" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="22.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="removePersonButton" disable="true" mnemonicParsing="false" prefHeight="88.0" prefWidth="112.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
+      <Button fx:id="personRemoveButton" disable="true" mnemonicParsing="false" prefHeight="88.0" prefWidth="112.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
          <GridPane.margin>
-            <Insets left="5.0" />
+            <Insets left="10.0" />
          </GridPane.margin>
       </Button>
    </children>

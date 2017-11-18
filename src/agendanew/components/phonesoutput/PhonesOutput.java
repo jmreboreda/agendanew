@@ -1,4 +1,4 @@
-package agendanew.phonesoutput;
+package agendanew.components.phonesoutput;
 
 import agendanew.ViewLoader;
 import agendanew.events.ShowPhonesEvent;
@@ -7,8 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
@@ -25,16 +23,16 @@ public class PhonesOutput extends AnchorPane {
     private EventHandler<ShowPhonesEvent> handler;
 
     public PhonesOutput() {
-        ViewLoader.load(this, "phonesoutput/phonesoutput.fxml");
+        ViewLoader.load(this, "components/phonesoutput/phonesoutput.fxml");
     }
 
     public void refreshPhones(List<String> phonesList) {
         if(phonesList.isEmpty()){
-            logger.info("TableView phones clearing ...");
+            logger.info("ListView phones clearing ...");
             phones.getItems().clear();
         }
         else {
-            logger.info("refreshing TableView phones ...");
+            logger.info("Refreshing ListView phones ...");
             ObservableList<String> phonesOL = FXCollections.observableList(phonesList);
             phones.setItems(phonesOL);
         }

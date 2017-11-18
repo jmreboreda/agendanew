@@ -1,7 +1,5 @@
-package agendanew.personinput;
+package agendanew.components.personinput;
 
-import agendanew.events.RemovePersonStateEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,21 +20,26 @@ public class PersonInput extends GridPane{
     @FXML
     private TextField nombre;
     @FXML
-    private Button addPersonButton;
+    private Button personAddButton;
     @FXML
-    private Button removePersonButton;
+    private Button personRemoveButton;
 
 
     public PersonInput() {
-        ViewLoader.load(this, "personinput/personinput.fxml");
-        addPersonButton.setOnMouseClicked(this::onAddPerson);
+        ViewLoader.load(this, "components/personinput/personinput.fxml");
+        personAddButton.setOnMouseClicked(this::onAddPerson);
+        personRemoveButton.setOnMouseClicked(this::onRemovePerson);
     }
 
     public void onAddPerson(MouseEvent event){
-        logger.info("addPersonButton clicked ... ");
+        logger.info("personAddButton clicked ... ");
     }
 
+    public void onRemovePerson(MouseEvent event){
+        logger.info("personRemoveButton clicked ...");
+
+    }
     public void refreshRemovePersonButtonState(Boolean state){
-        removePersonButton.disableProperty().setValue(!state);
+        personRemoveButton.disableProperty().setValue(!state);
     }
 }

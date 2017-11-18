@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import agendanew.components.personinput.PersonInput?>
+<?import agendanew.components.personsoutput.PersonsOutput?>
+<?import agendanew.components.personssearch.PersonsSearch?>
+<?import agendanew.components.phoneinput.PhoneInput?>
+<?import agendanew.components.phonesoutput.PhonesOutput?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import agendanew.personsoutput.PersonsOutput?>
-<?import agendanew.personssearch.PersonsSearch?>
-<?import agendanew.phoneinput.PhoneInput?>
-<?import agendanew.phonesoutput.PhonesOutput?>
-<?import agendanew.personinput.PersonInput?>
-
 <fx:root type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox>
          <PersonsSearch fx:id="personsSearch" />
          <PersonsOutput fx:id="personsOutput" />
-         <PersonInput fx:id="personInput"/>
+         <PersonInput fx:id="personInput" />
       </VBox>
       <VBox>
             <PhonesOutput fx:id="phonesOutput" />

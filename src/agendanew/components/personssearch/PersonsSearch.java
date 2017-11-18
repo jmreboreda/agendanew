@@ -1,4 +1,4 @@
-package agendanew.personssearch;
+package agendanew.components.personssearch;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ public class PersonsSearch extends AnchorPane {
 
     public PersonsSearch() {
 
-        ViewLoader.load(this, "personssearch/personssearch.fxml");
+        ViewLoader.load(this, "components/personssearch/personssearch.fxml");
     }
 
     @FXML
