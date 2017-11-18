@@ -34,12 +34,12 @@
             <Insets left="5.0" />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="addPersonButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="112.0" text="Añadir persona" textAlignment="CENTER" textFill="#284304" wrapText="true" GridPane.rowIndex="3">
+      <Button fx:id="addPersonButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.0" text="Añadir persona" textAlignment="CENTER" textFill="#284304" wrapText="true" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="35.0" />
+            <Insets left="22.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="addPersonButton1" disable="true" mnemonicParsing="false" prefHeight="88.0" prefWidth="112.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
+      <Button fx:id="removePersonButton" disable="true" mnemonicParsing="false" prefHeight="88.0" prefWidth="112.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin>

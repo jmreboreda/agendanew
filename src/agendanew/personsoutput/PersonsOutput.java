@@ -1,6 +1,6 @@
 package agendanew.personsoutput;
 
-import agendanew.events.SearchPersonsEvent;
+import agendanew.events.RemovePersonStateEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +19,7 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     private EventHandler<ShowPhonesEvent> handler;
+    private EventHandler<RemovePersonStateEvent> handlerRemovePersonButtonState;
 
     @FXML
     private ListView<String> personWhoMeetNamePattern;
@@ -37,7 +38,9 @@ public class PersonsOutput extends AnchorPane {
                 .addListener((observable, oldValue, newValue) -> showPhonesOnSelectPerson(newValue));
     }
 
-    public void refresh(String pattern) {
+    public void refreshPersons(String pattern) {
+
+
         if(pattern.isEmpty()){
             logger.info("ListView clearing ...");
             listPersonsWhoMatchPattern.clear();
@@ -70,10 +73,18 @@ public class PersonsOutput extends AnchorPane {
         List<String> phonesList = new ArrayList<>();
         if(newValue == null){
             phonesList.clear();
+            RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(false);
+            handlerRemovePersonButtonState.handle(removePersonStateEvent);
         }
         else {
+            RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(true);
+            handlerRemovePersonButtonState.handle(removePersonStateEvent);
             phonesList.add("652321612");
             phonesList.add("660250639");
+            if(newValue.contains("Feynman") || newValue.contains("Bohr")){
+                phonesList.add("617344492");
+                phonesList.add("696486497");
+            }
         }
         final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
         handler.handle(showPhonesEvent);
@@ -83,5 +94,8 @@ public class PersonsOutput extends AnchorPane {
     public void setHandlerOnShowPhones(EventHandler<ShowPhonesEvent> handler){
         this.handler = handler;
     }
+
+    public void setHandlerORemovePersonButtonState(EventHandler<RemovePersonStateEvent> handler){
+        this.handlerRemovePersonButtonState = handler;}
 
 }

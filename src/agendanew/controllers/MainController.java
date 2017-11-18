@@ -1,5 +1,6 @@
 package agendanew.controllers;
 
+import agendanew.events.RemovePersonStateEvent;
 import agendanew.events.ShowPhonesEvent;
 import agendanew.phonesoutput.PhonesOutput;
 import agendanew.utilities.BorderedTitledPane;
@@ -54,7 +55,7 @@ public class MainController extends HBox {
             @Override
             public void handle(SearchPersonsEvent event) {
                 String pattern = event.pattern;
-                personsOutput.refresh(pattern);
+                personsOutput.refreshPersons(pattern);
             }
         };
 
@@ -71,7 +72,15 @@ public class MainController extends HBox {
 
         personsOutput.setHandlerOnShowPhones(handler2);
 
+        final EventHandler<RemovePersonStateEvent> handler3 = new EventHandler<RemovePersonStateEvent>() {
+            @Override
+            public void handle(RemovePersonStateEvent event) {
+                Boolean state = event.getState();
+                personInput.refreshRemovePersonButtonState(state);
+            }
+        };
 
+        personsOutput.setHandlerORemovePersonButtonState(handler3);
     }
 
     private void showUI(){
