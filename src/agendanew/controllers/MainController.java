@@ -1,6 +1,6 @@
 package agendanew.controllers;
 
-import agendanew.events.RemovePersonStateEvent;
+import agendanew.events.PersonEntryActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import agendanew.components.phonesoutput.PhonesOutput;
 import javafx.event.EventHandler;
@@ -49,7 +49,7 @@ public class MainController extends HBox {
         final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
             @Override
             public void handle(SearchPersonsEvent event) {
-                String pattern = event.pattern;
+                String pattern = event.getPattern();
                 personsOutput.refreshPersons(pattern);
             }
         };
@@ -67,9 +67,9 @@ public class MainController extends HBox {
 
         personsOutput.setHandlerOnShowPhones(handler2);
 
-        final EventHandler<RemovePersonStateEvent> handler3 = new EventHandler<RemovePersonStateEvent>() {
+        final EventHandler<PersonEntryActionEvent> handler3 = new EventHandler<PersonEntryActionEvent>() {
             @Override
-            public void handle(RemovePersonStateEvent event) {
+            public void handle(PersonEntryActionEvent event) {
                 Boolean state = event.getState();
                 personInput.refreshRemovePersonButtonState(state);
             }

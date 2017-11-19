@@ -1,6 +1,6 @@
 package agendanew.components.personsoutput;
 
-import agendanew.events.RemovePersonStateEvent;
+import agendanew.events.PersonEntryActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     private EventHandler<ShowPhonesEvent> handler;
-    private EventHandler<RemovePersonStateEvent> handlerStateOfPersonRemoveButton;
+    private EventHandler<PersonEntryActionEvent> handlerStateOfPersonRemoveButton;
 
     @FXML
     private ListView<String> personWhoMeetNamePattern;
@@ -73,12 +73,12 @@ public class PersonsOutput extends AnchorPane {
         List<String> phonesList = new ArrayList<>();
         if(newValue == null){
             phonesList.clear();
-            RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(false);
-            handlerStateOfPersonRemoveButton.handle(removePersonStateEvent);
+            PersonEntryActionEvent personEntryActionEvent = new PersonEntryActionEvent(false);
+            handlerStateOfPersonRemoveButton.handle(personEntryActionEvent);
         }
         else {
-            RemovePersonStateEvent removePersonStateEvent = new RemovePersonStateEvent(true);
-            handlerStateOfPersonRemoveButton.handle(removePersonStateEvent);
+            PersonEntryActionEvent personEntryActionEvent = new PersonEntryActionEvent(true);
+            handlerStateOfPersonRemoveButton.handle(personEntryActionEvent);
             phonesList.add("652321612");
             phonesList.add("660250639");
             if(newValue.contains("Feynman") || newValue.contains("Bohr")){
@@ -95,7 +95,7 @@ public class PersonsOutput extends AnchorPane {
         this.handler = handler;
     }
 
-    public void setHandlerOnStateRemovePersonButton(EventHandler<RemovePersonStateEvent> handler){
+    public void setHandlerOnStateRemovePersonButton(EventHandler<PersonEntryActionEvent> handler){
         this.handlerStateOfPersonRemoveButton = handler;}
 
 }

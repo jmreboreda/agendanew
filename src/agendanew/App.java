@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         final MainController mainController = new MainController();
-        BorderedTitledPane btp = new BorderedTitledPane("Agenda teléfonica", mainController);
+        BorderedTitledPane btp = new BorderedTitledPane("Agenda telefónica", mainController);
         final Scene scene = new Scene(btp);
         scene.getStylesheets().add(getClass().getResource("utilities/bordered_titled_pane.css").toExternalForm());
         primaryStage.setTitle("Gestoría MOLDES - María Elena González Moldes");

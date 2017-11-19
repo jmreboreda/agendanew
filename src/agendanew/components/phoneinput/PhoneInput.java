@@ -4,12 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import agendanew.ViewLoader;
 
 import java.util.logging.Logger;
 
-public class PhoneInput extends HBox {
+public class PhoneInput extends GridPane {
 
     private static final Logger logger = Logger.getLogger(PhoneInput.class.getSimpleName());
 
