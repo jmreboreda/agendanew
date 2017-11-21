@@ -1,12 +1,10 @@
 package agendanew;
 
-import agendanew.utilities.BorderedTitledPane;
+import agendanew.components.BorderedTitledPane;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import agendanew.controllers.MainController;
-import javafx.stage.StageStyle;
 
 public class App extends Application {
 
@@ -15,7 +13,7 @@ public class App extends Application {
         final MainController mainController = new MainController();
         BorderedTitledPane btp = new BorderedTitledPane("Agenda telefónica", mainController);
         final Scene scene = new Scene(btp);
-        scene.getStylesheets().add(getClass().getResource("utilities/bordered_titled_pane.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/utilities/bordered_titled_pane.css").toExternalForm());
         primaryStage.setTitle("Gestoría MOLDES - María Elena González Moldes");
 
         primaryStage.setMaxWidth(612);

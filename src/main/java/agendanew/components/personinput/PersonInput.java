@@ -28,7 +28,7 @@ public class PersonInput extends GridPane{
 
 
     public PersonInput() {
-        ViewLoader.load(this, "components/personinput/personinput.fxml");
+        ViewLoader.load(this, "/agendanew/personinput.fxml");
         inputComponentOfAddPerson.setOnAction(this::onAddPerson);
         inputComponentOfRemovePerson.setOnMouseClicked(this::onRemovePerson);
     }

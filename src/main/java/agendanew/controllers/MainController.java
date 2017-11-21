@@ -42,7 +42,7 @@ public class MainController extends HBox {
 
     public MainController() {
         this.setPadding(new Insets(15,10,5,10));
-        this.parent = ViewLoader.load(this, "/agendanew/resources/agendanew/main.fxml");
+        this.parent = ViewLoader.load(this, "/agendanew/main.fxml");
     }
 
     @FXML

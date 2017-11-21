@@ -26,7 +26,7 @@ public class PhonesOutput extends AnchorPane {
 
     public PhonesOutput() {
 
-        ViewLoader.load(this, "components/phonesoutput/phonesoutput.fxml");
+        ViewLoader.load(this, "/agendanew/phonesoutput.fxml");
     }
 
     @FXML

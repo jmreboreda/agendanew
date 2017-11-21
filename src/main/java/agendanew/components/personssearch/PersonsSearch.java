@@ -21,7 +21,7 @@ public class PersonsSearch extends AnchorPane {
 
     public PersonsSearch() {
 
-        ViewLoader.load(this, "components/personssearch/personssearch.fxml");
+        ViewLoader.load(this, "/agendanew/personssearch.fxml");
     }
 
     @FXML

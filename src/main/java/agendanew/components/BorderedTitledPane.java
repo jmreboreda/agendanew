@@ -1,4 +1,4 @@
-package agendanew.utilities;
+package agendanew.components;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

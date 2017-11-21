@@ -28,7 +28,7 @@ public class PersonsOutput extends AnchorPane {
 
 
     public PersonsOutput() {
-        ViewLoader.load(this, "components/personsoutput/personsoutput.fxml");
+        ViewLoader.load(this, "/agendanew/personsoutput.fxml");
     }
 
     @FXML

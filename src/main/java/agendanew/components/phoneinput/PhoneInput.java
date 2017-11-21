@@ -25,7 +25,7 @@ public class PhoneInput extends GridPane {
     private Button exitButton;
 
     public PhoneInput() {
-        ViewLoader.load(this, "components/phoneinput/phoneinput.fxml");
+        ViewLoader.load(this, "/agendanew/phoneinput.fxml");
 
         phoneAddActivator.setOnMouseClicked(this::onAddPhone);
         exitButton.setOnMouseClicked(this::onExit);
