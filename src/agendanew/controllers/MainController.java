@@ -1,22 +1,24 @@
 package agendanew.controllers;
 
-import agendanew.events.PersonEntryActionEvent;
-import agendanew.events.ShowPhonesEvent;
+import agendanew.ViewLoader;
+import agendanew.components.personinput.PersonInput;
+import agendanew.components.personsoutput.PersonsOutput;
+import agendanew.components.personssearch.PersonsSearch;
+import agendanew.components.phoneinput.PhoneInput;
 import agendanew.components.phonesoutput.PhonesOutput;
+import agendanew.events.PersonSelectedActionEvent;
+import agendanew.events.PhoneSelectedActionEvent;
+import agendanew.events.SearchPersonsEvent;
+import agendanew.events.ShowPhonesEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
-import agendanew.ViewLoader;
-import agendanew.events.SearchPersonsEvent;
-import agendanew.components.personinput.PersonInput;
-import agendanew.components.phoneinput.PhoneInput;
-import agendanew.components.personsoutput.PersonsOutput;
-import agendanew.components.personssearch.PersonsSearch;
-
 import java.util.List;
 import java.util.logging.Logger;
+
+
 
 public class MainController extends HBox {
 
@@ -40,7 +42,7 @@ public class MainController extends HBox {
 
     public MainController() {
         this.setPadding(new Insets(15,10,5,10));
-        this.parent = ViewLoader.load(this, "main.fxml");
+        this.parent = ViewLoader.load(this, "/agendanew/resources/agendanew/main.fxml");
     }
 
     @FXML
@@ -67,14 +69,26 @@ public class MainController extends HBox {
 
         personsOutput.setHandlerOnShowPhones(handler2);
 
-        final EventHandler<PersonEntryActionEvent> handler3 = new EventHandler<PersonEntryActionEvent>() {
+        final EventHandler<PersonSelectedActionEvent> handler3 = new EventHandler<PersonSelectedActionEvent>() {
             @Override
-            public void handle(PersonEntryActionEvent event) {
+            public void handle(PersonSelectedActionEvent event) {
                 Boolean state = event.getState();
-                personInput.refreshRemovePersonButtonState(state);
+                personInput.setRemovePersonButtonState(state);
+                phoneInput.setAddPhoneButtonState(state);
             }
         };
 
         personsOutput.setHandlerOnStateRemovePersonButton(handler3);
+
+        final EventHandler<PhoneSelectedActionEvent> handler4 = new EventHandler<PhoneSelectedActionEvent>() {
+            @Override
+            public void handle(PhoneSelectedActionEvent event) {
+                Boolean state = event.getState();
+                phoneInput.setInputComponentOfRemovePhone(state);
+            }
+        };
+
+        phonesOutput.setHandlerStateOfPhoneRemoveButton(handler4);
     }
 }
+

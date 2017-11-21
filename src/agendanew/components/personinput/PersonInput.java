@@ -37,11 +37,12 @@ public class PersonInput extends GridPane{
 
         String message;
         Map<String, String> personInputMap = retrieveDataOfPersonInput();
-        if(personInputMap.size() < 1){
+        if(personInputMap.isEmpty()){
             message = "none or incomplete data!!";
         }else{
             message = personInputMap.get("apellido1") + " " + personInputMap.get("apellido2")
                     + ", " + personInputMap.get("nombre");
+            personInputClear();
         }
         logger.info("inputComponentOfAddPerson clicked with ... " + message);
     }
@@ -50,7 +51,7 @@ public class PersonInput extends GridPane{
         logger.info("inputComponentOfRemovePerson clicked ...");
 
     }
-    public void refreshRemovePersonButtonState(Boolean state){
+    public void setRemovePersonButtonState(Boolean state){
         inputComponentOfRemovePerson.disableProperty().setValue(!state);
     }
 
@@ -65,5 +66,12 @@ public class PersonInput extends GridPane{
                 personInputMap.put("nombre", nombre.getText());
             }
             return personInputMap;
-        }
+    }
+
+    private void personInputClear(){
+        apellido1.clear();
+        apellido2.clear();
+        nombre.clear();
+    }
+
 }

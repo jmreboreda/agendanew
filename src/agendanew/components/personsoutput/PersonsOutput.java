@@ -1,6 +1,6 @@
 package agendanew.components.personsoutput;
 
-import agendanew.events.PersonEntryActionEvent;
+import agendanew.events.PersonSelectedActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     private EventHandler<ShowPhonesEvent> handler;
-    private EventHandler<PersonEntryActionEvent> handlerStateOfPersonRemoveButton;
+    private EventHandler<PersonSelectedActionEvent> handlerStateOfPersonRemoveButton;
 
     @FXML
     private ListView<String> personWhoMeetNamePattern;
@@ -71,19 +71,23 @@ public class PersonsOutput extends AnchorPane {
         logger.info("Selected person changed to -> " + newValue);
 
         List<String> phonesList = new ArrayList<>();
+
         if(newValue == null){
             phonesList.clear();
-            PersonEntryActionEvent personEntryActionEvent = new PersonEntryActionEvent(false);
-            handlerStateOfPersonRemoveButton.handle(personEntryActionEvent);
+            PersonSelectedActionEvent personSelectedActionEvent = new PersonSelectedActionEvent(false);
+            handlerStateOfPersonRemoveButton.handle(personSelectedActionEvent);
         }
         else {
-            PersonEntryActionEvent personEntryActionEvent = new PersonEntryActionEvent(true);
-            handlerStateOfPersonRemoveButton.handle(personEntryActionEvent);
+            PersonSelectedActionEvent personSelectedActionEvent = new PersonSelectedActionEvent(true);
+            handlerStateOfPersonRemoveButton.handle(personSelectedActionEvent);
             phonesList.add("652321612");
             phonesList.add("660250639");
             if(newValue.contains("Feynman") || newValue.contains("Bohr")){
                 phonesList.add("617344492");
                 phonesList.add("696486497");
+            }
+            if(newValue.contains("Einstein")){
+                phonesList.add("to infinity and beyond ...");
             }
         }
         final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
@@ -95,7 +99,7 @@ public class PersonsOutput extends AnchorPane {
         this.handler = handler;
     }
 
-    public void setHandlerOnStateRemovePersonButton(EventHandler<PersonEntryActionEvent> handler){
+    public void setHandlerOnStateRemovePersonButton(EventHandler<PersonSelectedActionEvent> handler){
         this.handlerStateOfPersonRemoveButton = handler;}
 
 }

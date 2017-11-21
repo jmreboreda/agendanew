@@ -1,6 +1,8 @@
 package agendanew.components.phonesoutput;
 
 import agendanew.ViewLoader;
+import agendanew.events.PersonSelectedActionEvent;
+import agendanew.events.PhoneSelectedActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,10 +22,30 @@ public class PhonesOutput extends AnchorPane {
     @FXML
     private ListView<String> phones;
 
-    private EventHandler<ShowPhonesEvent> handler;
+    private EventHandler<PhoneSelectedActionEvent> handlerStateOfPhoneRemoveButton;
 
     public PhonesOutput() {
+
         ViewLoader.load(this, "components/phonesoutput/phonesoutput.fxml");
+    }
+
+    @FXML
+    public void initialize() {
+
+        phones.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> onSelectedPhone(newValue));
+    }
+
+    private void onSelectedPhone(String newValue){
+        logger.info("Selected phone is ... " + newValue);
+        if(newValue == null){
+            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(false);
+            handlerStateOfPhoneRemoveButton.handle(phoneSelectedActionEvent);
+        }else{
+            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(true);
+            handlerStateOfPhoneRemoveButton.handle(phoneSelectedActionEvent);
+        }
+
     }
 
     public void refreshPhones(List<String> phonesList) {
@@ -36,5 +58,9 @@ public class PhonesOutput extends AnchorPane {
             ObservableList<String> phonesOL = FXCollections.observableList(phonesList);
             phones.setItems(phonesOL);
         }
+    }
+
+    public void setHandlerStateOfPhoneRemoveButton(EventHandler<PhoneSelectedActionEvent> handler){
+        this.handlerStateOfPhoneRemoveButton = handler;
     }
 }
