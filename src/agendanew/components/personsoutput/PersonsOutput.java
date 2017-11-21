@@ -99,7 +99,7 @@ public class PersonsOutput extends AnchorPane {
         this.handler = handler;
     }
 
-    public void setHandlerOnStateRemovePersonButton(EventHandler<PersonSelectedActionEvent> handler){
+    public void setHandlerOnStateRemovePersonActivator(EventHandler<PersonSelectedActionEvent> handler){
         this.handlerStateOfPersonRemoveButton = handler;}
 
 }

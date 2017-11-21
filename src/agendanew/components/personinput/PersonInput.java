@@ -51,7 +51,7 @@ public class PersonInput extends GridPane{
         logger.info("inputComponentOfRemovePerson clicked ...");
 
     }
-    public void setRemovePersonButtonState(Boolean state){
+    public void setStateOfActivatorOfRemovePerson(Boolean state){
         inputComponentOfRemovePerson.disableProperty().setValue(!state);
     }
 

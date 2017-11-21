@@ -39,7 +39,7 @@
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="inputComponentOfRemovePerson" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="179.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.rowIndex="3">
+      <Button fx:id="inputComponentOfRemovePerson" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="298.0" text="Borrar persona seleccionada" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>

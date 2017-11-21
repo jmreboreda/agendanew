@@ -38,11 +38,13 @@ public class PhonesOutput extends AnchorPane {
 
     private void onSelectedPhone(String newValue){
         logger.info("Selected phone is ... " + newValue);
+        Boolean enableRemovePhoneInputActuator = false;
         if(newValue == null){
-            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(false);
+            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(enableRemovePhoneInputActuator);
             handlerStateOfPhoneRemoveButton.handle(phoneSelectedActionEvent);
         }else{
-            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(true);
+            enableRemovePhoneInputActuator = true;
+            PhoneSelectedActionEvent phoneSelectedActionEvent = new PhoneSelectedActionEvent(enableRemovePhoneInputActuator);
             handlerStateOfPhoneRemoveButton.handle(phoneSelectedActionEvent);
         }
 
@@ -60,7 +62,7 @@ public class PhonesOutput extends AnchorPane {
         }
     }
 
-    public void setHandlerStateOfPhoneRemoveButton(EventHandler<PhoneSelectedActionEvent> handler){
+    public void setHandlerStateOfPhoneRemoveActivator(EventHandler<PhoneSelectedActionEvent> handler){
         this.handlerStateOfPhoneRemoveButton = handler;
     }
 }

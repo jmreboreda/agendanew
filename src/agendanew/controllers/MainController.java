@@ -73,22 +73,22 @@ public class MainController extends HBox {
             @Override
             public void handle(PersonSelectedActionEvent event) {
                 Boolean state = event.getState();
-                personInput.setRemovePersonButtonState(state);
-                phoneInput.setAddPhoneButtonState(state);
+                personInput.setStateOfActivatorOfRemovePerson(state);
+                phoneInput.setStateOfActivatorOfAddPhone(state);
             }
         };
 
-        personsOutput.setHandlerOnStateRemovePersonButton(handler3);
+        personsOutput.setHandlerOnStateRemovePersonActivator(handler3);
 
         final EventHandler<PhoneSelectedActionEvent> handler4 = new EventHandler<PhoneSelectedActionEvent>() {
             @Override
             public void handle(PhoneSelectedActionEvent event) {
                 Boolean state = event.getState();
-                phoneInput.setInputComponentOfRemovePhone(state);
+                phoneInput.setPhoneRemoveActivator(state);
             }
         };
 
-        phonesOutput.setHandlerStateOfPhoneRemoveButton(handler4);
+        phonesOutput.setHandlerStateOfPhoneRemoveActivator(handler4);
     }
 }
 

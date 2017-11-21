@@ -18,16 +18,16 @@ public class PhoneInput extends GridPane {
     @FXML
     private TextField phoneNumber;
     @FXML
-    private Button phoneAddButton;
+    private Button phoneAddActivator;
     @FXML
-    private Button inputComponentOfRemovePhone;
+    private Button phoneRemoveActivator;
     @FXML
     private Button exitButton;
 
     public PhoneInput() {
         ViewLoader.load(this, "components/phoneinput/phoneinput.fxml");
 
-        phoneAddButton.setOnMouseClicked(this::onAddPhone);
+        phoneAddActivator.setOnMouseClicked(this::onAddPhone);
         exitButton.setOnMouseClicked(this::onExit);
 
     }
@@ -37,19 +37,17 @@ public class PhoneInput extends GridPane {
         if(!phoneNumber.getText().isEmpty()){
             number = phoneNumber.getText();
         }
-        logger.info("phoneAddButton clicked ... and the phone number to add is: " + number);
+        logger.info("phoneAddActivator clicked ... and the phone number to add is: " + number);
 
     }
 
-    public void setAddPhoneButtonState(Boolean state){
-        phoneAddButton.disableProperty().setValue(!state);
+    public void setStateOfActivatorOfAddPhone(Boolean state){
+        phoneAddActivator.disableProperty().setValue(!state);
     }
 
-    public void setInputComponentOfRemovePhone(Boolean state){
-        inputComponentOfRemovePhone.disableProperty().setValue(!state);
+    public void setPhoneRemoveActivator(Boolean state){
+        phoneRemoveActivator.disableProperty().setValue(!state);
     }
-
-
 
     private void onExit(MouseEvent event){
         Platform.exit();
