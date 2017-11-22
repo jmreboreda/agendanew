@@ -49,7 +49,13 @@ public class PersonsOutput extends AnchorPane {
             logger.info("refreshing ListView ...");
             listPersonsWhoMatchPattern = retrievePersonsWhoMatchPattern(pattern);
         }
-        personWhoMeetNamePattern.setItems(listPersonsWhoMatchPattern);
+        ListView<String> lv = new ListView<>(listPersonsWhoMatchPattern);
+        lv.setCellFactory(param -> {
+            return new Prueba.XCell();
+        });
+
+        this.getChildren().add(lv);
+        //personWhoMeetNamePattern.setItems(lv.getItems());
     }
 
     private ObservableList<String> retrievePersonsWhoMatchPattern(String pattern){
