@@ -1,5 +1,6 @@
 package agendanew.components.personsoutput;
 
+import agendanew.bussines.Person;
 import agendanew.events.PersonSelectedActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
@@ -22,20 +23,13 @@ public class PersonsOutput extends AnchorPane {
     private EventHandler<PersonSelectedActionEvent> handlerStateOfPersonRemoveButton;
 
     @FXML
-    private ListView<String> personWhoMeetNamePattern;
-    private ObservableList<String> listPersonsWhoMatchPattern;
+    private ListView<Person> personWhoMeetNamePattern;
+    private ObservableList<Person> listPersonsWhoMatchPattern;
 
 
 
     public PersonsOutput() {
         ViewLoader.load(this, "/agendanew/personsoutput.fxml");
-    }
-
-    @FXML
-    public void initialize() {
-
-//        personWhoMeetNamePattern.getSelectionModel().selectedItemProperty()
-//                .addListener((observable, oldValue, newValue) -> onSelectPerson(newValue));
     }
 
     public void refreshPersons(String pattern) {
@@ -49,43 +43,52 @@ public class PersonsOutput extends AnchorPane {
             logger.info("refreshing ListView ...");
             listPersonsWhoMatchPattern = retrievePersonsWhoMatchPattern(pattern);
         }
-        ListView<String> lv = new ListView<>(listPersonsWhoMatchPattern);
-        lv.setCellFactory(param -> {
+        ListView<Person> listViewWithDeleteButton = new ListView<>(listPersonsWhoMatchPattern);
+        listViewWithDeleteButton.setCellFactory(param -> {
             return new GraphCell.XCell();
         });
 
-        lv.setMinWidth(300);
-        lv.setMaxHeight(375);
-        this.getChildren().add(lv);
+        listViewWithDeleteButton.setMinWidth(295);
+        listViewWithDeleteButton.setMaxHeight(375);
+        this.getChildren().add(listViewWithDeleteButton);
 
-        lv.getSelectionModel().selectedItemProperty()
+        listViewWithDeleteButton.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> onSelectPerson(newValue));
 
-
-
-
-        //personWhoMeetNamePattern.setItems(lv.getItems());
     }
 
-    private ObservableList<String> retrievePersonsWhoMatchPattern(String pattern){
+    private ObservableList<Person> retrievePersonsWhoMatchPattern(String pattern){
 
-        List<String> personsList = new ArrayList<>();
-        personsList.add("Bohr, Niels");
-        personsList.add("Einstein, Albert");
-        personsList.add("Feynman, Richard P.");
-        personsList.add("Gell-Mann, Murray");
-        personsList.add("Higgs, Peter W.");
-        personsList.add("Nambu, Yoichiro ");
-        personsList.add("Thorne, Kip");
+        Person person1 = new Person(1, "Bohr","","Niels");
+        Person person2 = new Person(2, "Einstein","","Albert");
+        Person person3 = new Person(3, "Feynman","","Richard P.");
+        Person person4 = new Person(4, "Gell-Man","","Murray");
+        Person person5 = new Person(5, "Higgs","","Peter W.");
+        Person person6 = new Person(6, "Nambu","","Yoichiro");
+        Person person7 = new Person(7, "Thorne","","Kip");
+
+        List<Person> personsList = new ArrayList<>();
+        personsList.add(person1);
+        personsList.add(person2);
+        personsList.add(person3);
+        personsList.add(person4);
+        personsList.add(person5);
+        personsList.add(person6);
+        personsList.add(person7);
 
         return FXCollections.observableList(personsList);
     }
 
-    private void onSelectPerson(String newValue){
+    private void onSelectPerson(Person newValue){
 
         logger.info("Selected person changed to -> " + newValue);
-        showPhones(newValue);
 
+        if(newValue != null) {
+            showPhones(newValue.toString());
+        }else
+        {
+            showPhones(null);
+        }
     }
 
     private void showPhones(String newValue){
