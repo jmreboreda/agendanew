@@ -34,8 +34,8 @@ public class PersonsOutput extends AnchorPane {
     @FXML
     public void initialize() {
 
-        personWhoMeetNamePattern.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> showPhonesOnSelectPerson(newValue));
+//        personWhoMeetNamePattern.getSelectionModel().selectedItemProperty()
+//                .addListener((observable, oldValue, newValue) -> onSelectPerson(newValue));
     }
 
     public void refreshPersons(String pattern) {
@@ -51,10 +51,19 @@ public class PersonsOutput extends AnchorPane {
         }
         ListView<String> lv = new ListView<>(listPersonsWhoMatchPattern);
         lv.setCellFactory(param -> {
-            return new Prueba.XCell();
+            return new GraphCell.XCell();
         });
 
+        lv.setMinWidth(300);
+        lv.setMaxHeight(375);
         this.getChildren().add(lv);
+
+        lv.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> onSelectPerson(newValue));
+
+
+
+
         //personWhoMeetNamePattern.setItems(lv.getItems());
     }
 
@@ -72,9 +81,14 @@ public class PersonsOutput extends AnchorPane {
         return FXCollections.observableList(personsList);
     }
 
-    private void showPhonesOnSelectPerson(String newValue){
+    private void onSelectPerson(String newValue){
 
         logger.info("Selected person changed to -> " + newValue);
+        showPhones(newValue);
+
+    }
+
+    private void showPhones(String newValue){
 
         List<String> phonesList = new ArrayList<>();
 
@@ -98,7 +112,6 @@ public class PersonsOutput extends AnchorPane {
         }
         final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
         handler.handle(showPhonesEvent);
-
     }
 
     public void setHandlerOnShowPhones(EventHandler<ShowPhonesEvent> handler){
