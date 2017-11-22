@@ -26,8 +26,6 @@ public class PersonsOutput extends AnchorPane {
     private ListView<Person> personWhoMeetNamePattern;
     private ObservableList<Person> listPersonsWhoMatchPattern;
 
-
-
     public PersonsOutput() {
         ViewLoader.load(this, "/agendanew/personsoutput.fxml");
     }

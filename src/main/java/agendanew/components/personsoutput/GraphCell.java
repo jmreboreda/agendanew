@@ -16,17 +16,17 @@ public class GraphCell {
         HBox hbox = new HBox();
         Label label = new Label("");
         Pane pane = new Pane();
-        Button button = new Button("[X]");
+        Label xLabel = new Label("X");
 
         public XCell() {
             super();
 
-            hbox.getChildren().addAll(label, pane, button);
+            hbox.getChildren().addAll(label, pane, xLabel);
             HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setStyle("-fx-text-fill: #8b0000");
-            button.setTooltip(new Tooltip("Eliminar la persona"));
+            xLabel.setStyle("-fx-text-fill: #8b0000");
+            xLabel.setTooltip(new Tooltip("Eliminar la persona"));
 
-            button.setOnAction(this::onRemovePerson);
+            xLabel.setOnMouseClicked(e -> onRemovePerson());
         }
 
         @Override
@@ -42,7 +42,7 @@ public class GraphCell {
         }
 
 
-        private void onRemovePerson(ActionEvent event){
+        private void onRemovePerson(){
 
             getListView().getItems().remove(getItem());
         }
