@@ -23,14 +23,11 @@ public class PersonInput extends GridPane{
     private TextField nombre;
     @FXML
     private Button inputComponentOfAddPerson;
-    @FXML
-    private Button inputComponentOfRemovePerson;
 
 
     public PersonInput() {
         ViewLoader.load(this, "/agendanew/personinput.fxml");
         inputComponentOfAddPerson.setOnAction(this::onAddPerson);
-        inputComponentOfRemovePerson.setOnMouseClicked(this::onRemovePerson);
     }
 
     private void onAddPerson(ActionEvent event){
@@ -50,9 +47,6 @@ public class PersonInput extends GridPane{
     public void onRemovePerson(MouseEvent event){
         logger.info("inputComponentOfRemovePerson clicked ...");
 
-    }
-    public void setStateOfActivatorOfRemovePerson(Boolean state){
-        inputComponentOfRemovePerson.disableProperty().setValue(!state);
     }
 
     public Map<String,String> retrieveDataOfPersonInput() {

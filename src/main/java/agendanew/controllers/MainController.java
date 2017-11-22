@@ -73,7 +73,6 @@ public class MainController extends HBox {
             @Override
             public void handle(PersonSelectedActionEvent event) {
                 Boolean state = event.getState();
-                personInput.setStateOfActivatorOfRemovePerson(state);
                 phoneInput.setStateOfActivatorOfAddPhone(state);
             }
         };

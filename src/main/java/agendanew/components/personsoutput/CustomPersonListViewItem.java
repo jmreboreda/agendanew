@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.event.ActionEvent;
 
-public class GraphCell {
+public class CustomPersonListViewItem {
 
     static class XCell extends ListCell<Person> {
         HBox hbox = new HBox();

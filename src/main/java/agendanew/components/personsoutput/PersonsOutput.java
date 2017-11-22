@@ -43,7 +43,7 @@ public class PersonsOutput extends AnchorPane {
         }
         ListView<Person> listViewWithDeleteButton = new ListView<>(listPersonsWhoMatchPattern);
         listViewWithDeleteButton.setCellFactory(param -> {
-            return new GraphCell.XCell();
+            return new CustomPersonListViewItem.XCell();
         });
 
         listViewWithDeleteButton.setMinWidth(295);
