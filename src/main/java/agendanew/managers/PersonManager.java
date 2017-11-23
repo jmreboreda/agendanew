@@ -1,4 +1,4 @@
-package managers;
+package agendanew.managers;
 
 import agendanew.bussines.Person;
 import agendanew.persistence.PersonVO;

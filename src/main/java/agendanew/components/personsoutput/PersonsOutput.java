@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import agendanew.components.ViewLoader;
-import managers.PersonManager;
+import agendanew.managers.PersonManager;
 
 import java.util.ArrayList;
 import java.util.List;
