@@ -1,6 +1,6 @@
 package agendanew.controllers;
 
-import agendanew.ViewLoader;
+import agendanew.components.ViewLoader;
 import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
@@ -48,7 +48,7 @@ public class MainController extends HBox {
     @FXML
     public void initialize() {
 
-        final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
+        final EventHandler<SearchPersonsEvent> searchPersonsEventHandler = new EventHandler<SearchPersonsEvent>() {
             @Override
             public void handle(SearchPersonsEvent event) {
                 String pattern = event.getPattern();
@@ -56,7 +56,7 @@ public class MainController extends HBox {
             }
         };
 
-        personsSearch.setHandlerOnNamePatternChanged(handler);
+        personsSearch.setHandlerOnNamePatternChanged(searchPersonsEventHandler);
 
 
         final EventHandler<ShowPhonesEvent> handler2 = new EventHandler<ShowPhonesEvent>() {

@@ -3,15 +3,15 @@ package agendanew.bussines;
 public class Person {
 
     private Integer id;
-    private String apellido1;
-    private String apellido2;
-    private String nombre;
+    private String lastName1;
+    private String lastName2;
+    private String name;
 
-    public Person(Integer id, String apellido1, String apellido2, String nombre) {
+    public Person(Integer id, String lastName1, String lastName2, String name) {
         this.id = id;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-        this.nombre = nombre;
+        this.lastName1 = lastName1;
+        this.lastName2 = lastName2;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -22,33 +22,33 @@ public class Person {
         this.id = id;
     }
 
-    public String getApellido1() {
-        return apellido1;
+    public String getLastName1() {
+        return lastName1;
     }
 
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
+    public void setLastName1(String lastName1) {
+        this.lastName1 = lastName1;
     }
 
-    public String getApellido2() {
-        return apellido2;
+    public String getLastName2() {
+        return lastName2;
     }
 
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
+    public void setLastName2(String lastName2) {
+        this.lastName2 = lastName2;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString(){
 
-        return getApellido1() + " " + getApellido2() + ", " + getNombre();
+        return getLastName1() + " " + getLastName2() + ", " + getName();
     }
 }

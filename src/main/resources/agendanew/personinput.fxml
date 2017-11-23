@@ -18,22 +18,22 @@
     <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="apellido1" promptText="Apellido 1">
+      <TextField fx:id="lastName1" promptText="Apellido 1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="apellido2" promptText="Apellido 2" GridPane.rowIndex="1">
+      <TextField fx:id="lastName2" promptText="Apellido 2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="nombre" promptText="Nombre" GridPane.rowIndex="2">
+      <TextField fx:id="name" promptText="Nombre" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="inputComponentOfAddPerson" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" text="Añadir persona" textAlignment="CENTER" textFill="#044207" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
+      <Button fx:id="addPersonButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="120.0" text="Añadir persona" textAlignment="CENTER" textFill="#044207" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>

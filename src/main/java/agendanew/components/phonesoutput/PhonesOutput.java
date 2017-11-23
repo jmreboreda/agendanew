@@ -1,9 +1,7 @@
 package agendanew.components.phonesoutput;
 
-import agendanew.ViewLoader;
-import agendanew.events.PersonSelectedActionEvent;
+import agendanew.components.ViewLoader;
 import agendanew.events.PhoneSelectedActionEvent;
-import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

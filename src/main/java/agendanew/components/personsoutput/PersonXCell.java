@@ -10,21 +10,20 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.event.ActionEvent;
 
-public class CustomPersonListViewItem {
+public class PersonXCell extends ListCell<Person> {
 
-    static class XCell extends ListCell<Person> {
         HBox hbox = new HBox();
         Label label = new Label("");
         Pane pane = new Pane();
-        Label xLabel = new Label("X");
+        Label xLabel = new Label(" X ");
 
-        public XCell() {
+        public PersonXCell() {
             super();
 
             hbox.getChildren().addAll(label, pane, xLabel);
             HBox.setHgrow(pane, Priority.ALWAYS);
             xLabel.setStyle("-fx-text-fill: #8b0000");
-            xLabel.setTooltip(new Tooltip("Eliminar la persona"));
+            xLabel.setTooltip(new Tooltip("Eliminar la persona (y sus teléfonos asociados)"));
 
             xLabel.setOnMouseClicked(e -> onRemovePerson());
         }
@@ -41,10 +40,7 @@ public class CustomPersonListViewItem {
             }
         }
 
-
         private void onRemovePerson(){
-
             getListView().getItems().remove(getItem());
         }
-    }
 }
