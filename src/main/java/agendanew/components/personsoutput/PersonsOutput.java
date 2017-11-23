@@ -20,7 +20,7 @@ public class PersonsOutput extends AnchorPane {
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
 
     private EventHandler<ShowPhonesEvent> handler;
-    private EventHandler<PersonSelectedActionEvent> handlerStateOfPersonRemoveButton;
+    private EventHandler<PersonSelectedActionEvent> handlerStateOfAddPhoneButton;
 
     @FXML
     private ListView<Person> personWhoMeetNamePattern;
@@ -83,10 +83,17 @@ public class PersonsOutput extends AnchorPane {
 
         if(newValue != null) {
             showPhones(newValue.toString());
+
+            PersonSelectedActionEvent event = new PersonSelectedActionEvent(true);
+            handlerStateOfAddPhoneButton.handle(event);
         }else
         {
             showPhones(null);
+
+            PersonSelectedActionEvent event = new PersonSelectedActionEvent(false);
+            handlerStateOfAddPhoneButton.handle(event);
         }
+
     }
 
     private void showPhones(String newValue){
@@ -95,12 +102,8 @@ public class PersonsOutput extends AnchorPane {
 
         if(newValue == null){
             phonesList.clear();
-            PersonSelectedActionEvent personSelectedActionEvent = new PersonSelectedActionEvent(false);
-            handlerStateOfPersonRemoveButton.handle(personSelectedActionEvent);
         }
         else {
-            PersonSelectedActionEvent personSelectedActionEvent = new PersonSelectedActionEvent(true);
-            handlerStateOfPersonRemoveButton.handle(personSelectedActionEvent);
             phonesList.add("652321612");
             phonesList.add("660250639");
             if(newValue.contains("Feynman") || newValue.contains("Bohr")){
@@ -119,7 +122,7 @@ public class PersonsOutput extends AnchorPane {
         this.handler = handler;
     }
 
-    public void setHandlerOnStateRemovePersonActivator(EventHandler<PersonSelectedActionEvent> handler){
-        this.handlerStateOfPersonRemoveButton = handler;}
-
+    public void setHandlerOnAddNewPhone(EventHandler<PersonSelectedActionEvent> handler){
+        this.handlerStateOfAddPhoneButton = handler;
+    }
 }

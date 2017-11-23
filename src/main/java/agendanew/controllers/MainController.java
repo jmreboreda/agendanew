@@ -77,7 +77,7 @@ public class MainController extends HBox {
             }
         };
 
-        personsOutput.setHandlerOnStateRemovePersonActivator(handler3);
+        personsOutput.setHandlerOnAddNewPhone(handler3);
 
         final EventHandler<PhoneSelectedActionEvent> handler4 = new EventHandler<PhoneSelectedActionEvent>() {
             @Override
