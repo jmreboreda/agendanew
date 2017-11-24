@@ -1,7 +1,5 @@
 package agendanew.persistence;
 
-import agendanew.bussines.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 

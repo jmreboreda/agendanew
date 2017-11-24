@@ -1,6 +1,7 @@
 package agendanew.components.personsoutput;
 
 import agendanew.bussines.Person;
+import agendanew.controllers.PersonController;
 import agendanew.events.PersonSelectedActionEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
@@ -57,8 +58,8 @@ public class PersonsOutput extends AnchorPane {
 
     private ObservableList<Person> retrievePersonsWhoMatchPattern(String pattern){
 
-     PersonManager manager = new PersonManager();
-     List<Person> personList = manager.findPersonByNamePattern(pattern);
+     PersonController controller = new PersonController();
+     List<Person> personList = controller.findPersonByNamePattern(pattern);
 
      return FXCollections.observableList(personList);
 
