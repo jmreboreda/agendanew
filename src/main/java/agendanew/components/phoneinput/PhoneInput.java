@@ -1,13 +1,14 @@
 package agendanew.components.phoneinput;
 
+import agendanew.events.PersonSelectedActionEvent;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import agendanew.ViewLoader;
-
+import agendanew.components.ViewLoader;
 import java.util.logging.Logger;
 
 public class PhoneInput extends GridPane {
@@ -23,6 +24,8 @@ public class PhoneInput extends GridPane {
     private Button phoneRemoveActivator;
     @FXML
     private Button exitButton;
+
+    private EventHandler<PersonSelectedActionEvent> handler;
 
     public PhoneInput() {
         ViewLoader.load(this, "/agendanew/phoneinput.fxml");
@@ -42,7 +45,9 @@ public class PhoneInput extends GridPane {
     }
 
     public void setStateOfActivatorOfAddPhone(Boolean state){
+
         phoneAddActivator.disableProperty().setValue(!state);
+        //phoneAddActivator.setDisable(state);
     }
 
     public void setPhoneRemoveActivator(Boolean state){

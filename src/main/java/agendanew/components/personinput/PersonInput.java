@@ -1,14 +1,15 @@
 package agendanew.components.personinput;
 
-import agendanew.ViewLoader;
+import agendanew.bussines.Person;
+import agendanew.components.ViewLoader;
+import agendanew.managers.PersonManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.logging.Logger;
 
 public class PersonInput extends GridPane{
@@ -16,62 +17,57 @@ public class PersonInput extends GridPane{
     private static final Logger logger = Logger.getLogger(PersonInput.class.getSimpleName());
 
     @FXML
-    private TextField apellido1;
+    private TextField lastName1;
     @FXML
-    private TextField apellido2;
+    private TextField lastName2;
     @FXML
-    private TextField nombre;
+    private TextField name;
     @FXML
-    private Button inputComponentOfAddPerson;
-    @FXML
-    private Button inputComponentOfRemovePerson;
+    private Button addPersonButton;
+
+    PersonManager manager = new PersonManager();
 
 
     public PersonInput() {
         ViewLoader.load(this, "/agendanew/personinput.fxml");
-        inputComponentOfAddPerson.setOnAction(this::onAddPerson);
-        inputComponentOfRemovePerson.setOnMouseClicked(this::onRemovePerson);
+        addPersonButton.setOnAction(this::onAddPerson);
     }
 
     private void onAddPerson(ActionEvent event){
 
         String message;
-        Map<String, String> personInputMap = retrieveDataOfPersonInput();
-        if(personInputMap.isEmpty()){
+        Person person = retrievePerson();
+
+        manager.createPerson(person);
+
+        if(person == null){
             message = "none or incomplete data!!";
         }else{
-            message = personInputMap.get("apellido1") + " " + personInputMap.get("apellido2")
-                    + ", " + personInputMap.get("nombre");
+            message = person.getLastName1() + " " + person.getLastName2()
+                    + ", " + person.getName();
             personInputClear();
         }
-        logger.info("inputComponentOfAddPerson clicked with ... " + message);
+        logger.info("addPersonButton clicked with ... " + message);
     }
 
     public void onRemovePerson(MouseEvent event){
         logger.info("inputComponentOfRemovePerson clicked ...");
 
     }
-    public void setStateOfActivatorOfRemovePerson(Boolean state){
-        inputComponentOfRemovePerson.disableProperty().setValue(!state);
-    }
 
-    public Map<String,String> retrieveDataOfPersonInput() {
+    public Person retrievePerson() {
 
-        Map<String, String> personInputMap = new HashMap<>();
-        if (!apellido1.getText().isEmpty() &&
-                !apellido2.getText().isEmpty() && !nombre.getText().isEmpty()) {
+        if(lastName1.getText().isEmpty() || lastName2.getText().isEmpty() || name.getText().isEmpty()){
+            return null;
+        }
 
-                personInputMap.put("apellido1", apellido1.getText());
-                personInputMap.put("apellido2", apellido2.getText());
-                personInputMap.put("nombre", nombre.getText());
-            }
-            return personInputMap;
+        return new Person(50, lastName1.getText(), lastName2.getText(), name.getText());
     }
 
     private void personInputClear(){
-        apellido1.clear();
-        apellido2.clear();
-        nombre.clear();
+        lastName1.clear();
+        lastName2.clear();
+        name.clear();
     }
 
 }

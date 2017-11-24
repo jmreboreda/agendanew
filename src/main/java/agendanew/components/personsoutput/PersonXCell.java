@@ -1,5 +1,6 @@
 package agendanew.components.personsoutput;
 
+import agendanew.bussines.Person;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -7,35 +8,39 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.event.ActionEvent;
 
-public class GraphCell {
+public class PersonXCell extends ListCell<Person> {
 
-    static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
         Label label = new Label("");
         Pane pane = new Pane();
-        Button button = new Button("[X]");
+        Label xLabel = new Label(" X ");
 
-        public XCell() {
+        public PersonXCell() {
             super();
 
-            hbox.getChildren().addAll(label, pane, button);
+            hbox.getChildren().addAll(label, pane, xLabel);
             HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setStyle("-fx-text-fill: #8b0000");
-            button.setTooltip(new Tooltip("Eliminar la persona"));
-            button.setOnAction(event -> getListView().getItems().remove(getItem()));
+            xLabel.setStyle("-fx-text-fill: #8b0000");
+            xLabel.setTooltip(new Tooltip("Eliminar la persona (y sus teléfonos asociados)"));
+
+            xLabel.setOnMouseClicked(e -> onRemovePerson());
         }
 
         @Override
-        protected void updateItem(String item, boolean empty) {
+        protected void updateItem(Person item, boolean empty) {
             super.updateItem(item, empty);
             setText(null);
             setGraphic(null);
 
             if (item != null && !empty) {
-                label.setText(item);
+                label.setText(item.toString());
                 setGraphic(hbox);
             }
         }
-    }
+
+        private void onRemovePerson(){
+            getListView().getItems().remove(getItem());
+        }
 }

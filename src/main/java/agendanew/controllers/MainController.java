@@ -1,6 +1,7 @@
 package agendanew.controllers;
 
-import agendanew.ViewLoader;
+import agendanew.bussines.Person;
+import agendanew.components.ViewLoader;
 import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
@@ -48,15 +49,15 @@ public class MainController extends HBox {
     @FXML
     public void initialize() {
 
-        final EventHandler<SearchPersonsEvent> handler = new EventHandler<SearchPersonsEvent>() {
+        final EventHandler<SearchPersonsEvent> searchPersonsEventHandler = new EventHandler<SearchPersonsEvent>() {
             @Override
             public void handle(SearchPersonsEvent event) {
-                String pattern = event.getPattern();
-                personsOutput.refreshPersons(pattern);
+                List<Person> persons = event.getPersons();
+                personsOutput.refreshPersons(persons);
             }
         };
 
-        personsSearch.setHandlerOnNamePatternChanged(handler);
+        personsSearch.setHandlerOnNamePatternChanged(searchPersonsEventHandler);
 
 
         final EventHandler<ShowPhonesEvent> handler2 = new EventHandler<ShowPhonesEvent>() {
@@ -73,12 +74,11 @@ public class MainController extends HBox {
             @Override
             public void handle(PersonSelectedActionEvent event) {
                 Boolean state = event.getState();
-                personInput.setStateOfActivatorOfRemovePerson(state);
                 phoneInput.setStateOfActivatorOfAddPhone(state);
             }
         };
 
-        personsOutput.setHandlerOnStateRemovePersonActivator(handler3);
+        personsOutput.setHandlerOnAddNewPhone(handler3);
 
         final EventHandler<PhoneSelectedActionEvent> handler4 = new EventHandler<PhoneSelectedActionEvent>() {
             @Override
