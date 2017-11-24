@@ -1,5 +1,6 @@
 package agendanew.controllers;
 
+import agendanew.bussines.Person;
 import agendanew.components.ViewLoader;
 import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
@@ -51,8 +52,8 @@ public class MainController extends HBox {
         final EventHandler<SearchPersonsEvent> searchPersonsEventHandler = new EventHandler<SearchPersonsEvent>() {
             @Override
             public void handle(SearchPersonsEvent event) {
-                String pattern = event.getPattern();
-                personsOutput.refreshPersons(pattern);
+                List<Person> persons = event.getPersons();
+                personsOutput.refreshPersons(persons);
             }
         };
 

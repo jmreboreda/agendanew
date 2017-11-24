@@ -20,7 +20,16 @@ public class PersonVO {
     }
 
     public PersonVO() {
-          createPersonVO();
+
+        if(personsListInit.isEmpty()){
+            createPersonVOList();
+        }
+    }
+
+    public void createPerson(PersonVO personVO){
+
+        personsListInit.add(personVO);
+
     }
 
     public List<PersonVO> findPersonByNamePattern(String pattern){
@@ -36,7 +45,7 @@ public class PersonVO {
         return personsVOList;
     }
 
-    private void createPersonVO(){
+    public void createPersonVOList(){
 
         PersonVO person1 = new PersonVO(1, "Bohr","","Niels");
         PersonVO person2 = new PersonVO(2, "Einstein","","Albert");

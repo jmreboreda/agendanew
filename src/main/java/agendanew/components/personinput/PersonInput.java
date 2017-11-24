@@ -2,6 +2,7 @@ package agendanew.components.personinput;
 
 import agendanew.bussines.Person;
 import agendanew.components.ViewLoader;
+import agendanew.managers.PersonManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,6 +25,8 @@ public class PersonInput extends GridPane{
     @FXML
     private Button addPersonButton;
 
+    PersonManager manager = new PersonManager();
+
 
     public PersonInput() {
         ViewLoader.load(this, "/agendanew/personinput.fxml");
@@ -34,6 +37,9 @@ public class PersonInput extends GridPane{
 
         String message;
         Person person = retrievePerson();
+
+        manager.createPerson(person);
+
         if(person == null){
             message = "none or incomplete data!!";
         }else{

@@ -23,25 +23,18 @@ public class PersonsOutput extends AnchorPane {
 
     private EventHandler<ShowPhonesEvent> showPhonesEventEventHandler;
     private EventHandler<PersonSelectedActionEvent> handlerStateOfAddPhoneButton;
-
     @FXML
     private ListView<Person> personWhoMeetNamePattern;
-    private ObservableList<Person> listPersonsWhoMatchPattern;
+    //private ObservableList<Person> listPersonsWhoMatchPattern;
 
     public PersonsOutput() {
         ViewLoader.load(this, "/agendanew/personsoutput.fxml");
     }
 
-    public void refreshPersons(String pattern) {
+    public void refreshPersons(List<Person> persons) {
 
-        if(pattern.isEmpty()){
-            logger.info("ListView clearing ...");
-            listPersonsWhoMatchPattern.clear();
-        }
-        else {
-            logger.info("refreshing ListView ...");
-            listPersonsWhoMatchPattern = retrievePersonsWhoMatchPattern(pattern);
-        }
+        ObservableList<Person> listPersonsWhoMatchPattern = FXCollections.observableList(persons);
+
         ListView<Person> listViewWithDeleteLabel = new ListView<>(listPersonsWhoMatchPattern);
         listViewWithDeleteLabel.setCellFactory(param -> {
             return new PersonXCell();
