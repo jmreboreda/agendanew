@@ -13,7 +13,7 @@ public class App extends Application {
         final MainController mainController = new MainController();
         BorderedTitledPane btp = new BorderedTitledPane("Agenda telefónica", mainController);
         final Scene scene = new Scene(btp);
-        scene.getStylesheets().add(getClass().getResource("/utilities/bordered_titled_pane.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/stylesheets/bordered_titled_pane.css").toExternalForm());
         primaryStage.setTitle("Gestoría MOLDES - María Elena González Moldes");
 
         primaryStage.setMaxWidth(612);

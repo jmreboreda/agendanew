@@ -11,6 +11,7 @@ import agendanew.events.PersonSelectedActionEvent;
 import agendanew.events.PhoneSelectedActionEvent;
 import agendanew.events.SearchPersonsEvent;
 import agendanew.events.ShowPhonesEvent;
+import agendanew.persistence.PersonDB;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;

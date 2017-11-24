@@ -2,6 +2,7 @@ package agendanew.components.personinput;
 
 import agendanew.bussines.Person;
 import agendanew.components.ViewLoader;
+import agendanew.controllers.PersonController;
 import agendanew.managers.PersonManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class PersonInput extends GridPane{
@@ -38,7 +40,9 @@ public class PersonInput extends GridPane{
         String message;
         Person person = retrievePerson();
 
-        manager.createPerson(person);
+        PersonController controller = new PersonController();
+
+        List<Person> personList = controller.createPerson(person);
 
         if(person == null){
             message = "none or incomplete data!!";

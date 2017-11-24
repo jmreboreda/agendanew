@@ -9,12 +9,24 @@ import java.util.List;
 
 public class PersonController {
 
+    PersonManager manager = new PersonManager();
+
+
     public PersonController() {
+    }
+
+
+    public List<Person> createPerson(Person person){
+
+        List<Person> personList = manager.createPerson(person);
+
+        return personList;
+
     }
 
     public List<Person> findPersonByNamePattern(String pattern){
 
-        PersonManager manager = new PersonManager();
+
         List<Person> personsList = manager.findPersonByNamePattern(pattern);
 
         return personsList;
