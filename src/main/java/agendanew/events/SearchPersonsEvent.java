@@ -9,15 +9,15 @@ import java.util.List;
 public class SearchPersonsEvent extends Event {
 
 	public static final EventType<SearchPersonsEvent> SEARCH_PERSONS_EVENT = new EventType<>("SEARCH_PERSONS_EVENT");
-	private final List<Person> persons;
+	private final String pattern;
 
-	public SearchPersonsEvent(List<Person> persons) {
+	public SearchPersonsEvent(String pattern) {
 		super(SEARCH_PERSONS_EVENT);
-		this.persons = persons;
+		this.pattern = pattern;
 	}
 
-	public List<Person> getPersons() {
-		return persons;
+	public String getPattern() {
+		return pattern;
 	}
 
 }

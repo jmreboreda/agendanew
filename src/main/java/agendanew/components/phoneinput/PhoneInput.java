@@ -1,6 +1,6 @@
 package agendanew.components.phoneinput;
 
-import agendanew.events.PersonSelectedActionEvent;
+import agendanew.events.SelectPersonEvent;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class PhoneInput extends GridPane {
     @FXML
     private Button exitButton;
 
-    private EventHandler<PersonSelectedActionEvent> handler;
+    private EventHandler<SelectPersonEvent> handler;
 
     public PhoneInput() {
         ViewLoader.load(this, "/agendanew/phoneinput.fxml");

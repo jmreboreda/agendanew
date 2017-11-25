@@ -1,18 +1,16 @@
 package agendanew.controllers;
 
 import agendanew.bussines.Person;
+import agendanew.bussines.Phone;
 import agendanew.components.ViewLoader;
 import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
 import agendanew.components.phonesoutput.PhonesOutput;
-import agendanew.events.PersonSelectedActionEvent;
-import agendanew.events.PhoneSelectedActionEvent;
+import agendanew.events.SelectPersonEvent;
 import agendanew.events.SearchPersonsEvent;
 import agendanew.events.ShowPhonesEvent;
-import agendanew.persistence.PersonDB;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -49,47 +47,62 @@ public class MainController extends HBox {
 
     @FXML
     public void initialize() {
-
-        final EventHandler<SearchPersonsEvent> searchPersonsEventHandler = new EventHandler<SearchPersonsEvent>() {
-            @Override
-            public void handle(SearchPersonsEvent event) {
-                List<Person> persons = event.getPersons();
-                personsOutput.refreshPersons(persons);
-            }
-        };
-
-        personsSearch.setHandlerOnNamePatternChanged(searchPersonsEventHandler);
-
-
-        final EventHandler<ShowPhonesEvent> handler2 = new EventHandler<ShowPhonesEvent>() {
-            @Override
-            public void handle(ShowPhonesEvent event) {
-                List<String> phones = event.getPhones();
-                phonesOutput.refreshPhones(phones);
-            }
-        };
-
-        personsOutput.setHandlerOnShowPhones(handler2);
-
-        final EventHandler<PersonSelectedActionEvent> handler3 = new EventHandler<PersonSelectedActionEvent>() {
-            @Override
-            public void handle(PersonSelectedActionEvent event) {
-                Boolean state = event.getState();
-                phoneInput.setStateOfActivatorOfAddPhone(state);
-            }
-        };
-
-        personsOutput.setHandlerOnAddNewPhone(handler3);
-
-        final EventHandler<PhoneSelectedActionEvent> handler4 = new EventHandler<PhoneSelectedActionEvent>() {
-            @Override
-            public void handle(PhoneSelectedActionEvent event) {
-                Boolean state = event.getState();
-                phoneInput.setPhoneRemoveActivator(state);
-            }
-        };
-
-        phonesOutput.setHandlerStateOfPhoneRemoveActivator(handler4);
+        personsSearch.setOnSearchPersons(this::onSearchPersons);
+        personsOutput.setOnSelectPerson(this::onSelectPerson);
     }
+
+    private void onSearchPersons(SearchPersonsEvent searchPersonsEvent){
+        final String pattern = searchPersonsEvent.getPattern();
+        if(pattern.isEmpty()){
+            personsOutput.clear();
+            phonesOutput.clear();
+            return;
+        }
+        final List<Person> persons = findPersonByNamePattern(pattern);
+        refreshPersons(persons);
+    }
+
+    private void onSelectPerson(SelectPersonEvent selectPersonEvent){
+        final Person selectedPerson = selectPersonEvent.getPerson();
+        if(selectedPerson != null) {
+            final List<Phone> phones = retrievePhones(selectedPerson);
+            refreshPhones(phones);
+        }
+    }
+
+    private void onShowPhones(ShowPhonesEvent showPhonesEvent){
+        List<Phone> phones = showPhonesEvent.getPhones();
+        refreshPhones(phones);
+    }
+
+    private List<Person> findPersonByNamePattern(String pattern){
+        PersonController controller = new PersonController();
+        List<Person> personList = controller.findPersonByNamePattern(pattern);
+
+        return personList;
+    }
+
+    private List<Phone> retrievePhones(Person person){
+        PhoneController controller = new PhoneController();
+
+        return controller.findPhoneByPerson(person);
+    }
+
+    private void refreshPersons(List<Person> persons) {
+        if(persons.isEmpty()){
+            personsOutput.clear();
+        }
+        personsOutput.refresh(persons);
+        phonesOutput.clear();
+    }
+
+    private void refreshPhones(List<Phone> phones){
+        if(phones.isEmpty()){
+            phonesOutput.clear();
+        }
+        phonesOutput.refresh(phones);
+    }
+
+
 }
 

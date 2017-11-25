@@ -1,8 +1,9 @@
 package agendanew.components.personsoutput;
 
 import agendanew.bussines.Person;
-import agendanew.controllers.PersonController;
-import agendanew.events.PersonSelectedActionEvent;
+import agendanew.bussines.Phone;
+import agendanew.controllers.PhoneController;
+import agendanew.events.SelectPersonEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import agendanew.components.ViewLoader;
-import agendanew.managers.PersonManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,81 +20,53 @@ import java.util.logging.Logger;
 public class PersonsOutput extends AnchorPane {
 
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
+    private static final String PERSONS_OUTPUT_FXML = "/agendanew/personsoutput.fxml";
 
+    private EventHandler<SelectPersonEvent> selectPersonEventEventHandler;
     private EventHandler<ShowPhonesEvent> showPhonesEventEventHandler;
-    private EventHandler<PersonSelectedActionEvent> handlerStateOfAddPhoneButton;
+    private EventHandler<SelectPersonEvent> handlerStateOfAddPhoneButton;
+
     @FXML
     private ListView<Person> personWhoMeetNamePattern;
-    //private ObservableList<Person> listPersonsWhoMatchPattern;
 
     public PersonsOutput() {
-        ViewLoader.load(this, "/agendanew/personsoutput.fxml");
+        ViewLoader.load(this, PERSONS_OUTPUT_FXML);
     }
 
-    public void refreshPersons(List<Person> persons) {
+    public void refresh(List<Person> persons) {
 
         ObservableList<Person> listPersonsWhoMatchPattern = FXCollections.observableList(persons);
 
-        ListView<Person> listViewWithDeleteLabel = new ListView<>(listPersonsWhoMatchPattern);
-        listViewWithDeleteLabel.setCellFactory(param -> {
+        personWhoMeetNamePattern = new ListView<>(listPersonsWhoMatchPattern);
+        personWhoMeetNamePattern.setCellFactory(param -> {
             return new PersonXCell();
         });
 
-        listViewWithDeleteLabel.setMinWidth(295);
-        listViewWithDeleteLabel.setMaxHeight(375);
-        this.getChildren().add(listViewWithDeleteLabel);
+        personWhoMeetNamePattern.setMinWidth(295);
+        personWhoMeetNamePattern.setMaxHeight(USE_COMPUTED_SIZE);
+        this.getChildren().add(personWhoMeetNamePattern);
 
-        listViewWithDeleteLabel.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> onSelectPerson(newValue));
+        personWhoMeetNamePattern.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newPersonValue) -> onSelectPerson(newPersonValue));
+    }
+
+    public void clear(){
+        personWhoMeetNamePattern.getItems().clear();
+    }
+
+    private void onSelectPerson(Person person){
+
+        logger.info("Selected person changed to -> " + person);
+        SelectPersonEvent selectPersonEvent = new SelectPersonEvent(person);
+        selectPersonEventEventHandler.handle(selectPersonEvent);
 
     }
 
-    private ObservableList<Person> retrievePersonsWhoMatchPattern(String pattern){
+    private void showPhones(Person person){
 
-     PersonController controller = new PersonController();
-     List<Person> personList = controller.findPersonByNamePattern(pattern);
+        PhoneController controller = new PhoneController();
+        List<Phone> phonesList = controller.findPhoneByPerson(person);
 
-     return FXCollections.observableList(personList);
-
-    }
-
-    private void onSelectPerson(Person newValue){
-
-        logger.info("Selected person changed to -> " + newValue);
-
-        if(newValue != null) {
-            showPhones(newValue.toString());
-
-            PersonSelectedActionEvent event = new PersonSelectedActionEvent(true);
-            handlerStateOfAddPhoneButton.handle(event);
-        }else
-        {
-            showPhones(null);
-
-            PersonSelectedActionEvent event = new PersonSelectedActionEvent(false);
-            handlerStateOfAddPhoneButton.handle(event);
-        }
-
-    }
-
-    private void showPhones(String newValue){
-
-        List<String> phonesList = new ArrayList<>();
-
-        if(newValue == null){
-            phonesList.clear();
-        }
-        else {
-            phonesList.add("652321612");
-            phonesList.add("660250639");
-            if(newValue.contains("Feynman") || newValue.contains("Bohr")){
-                phonesList.add("617344492");
-                phonesList.add("696486497");
-            }
-            if(newValue.contains("Einstein")){
-                phonesList.add("666999666");
-            }
-        }
         final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
         showPhonesEventEventHandler.handle(showPhonesEvent);
     }
@@ -103,7 +75,11 @@ public class PersonsOutput extends AnchorPane {
         this.showPhonesEventEventHandler = handler;
     }
 
-    public void setHandlerOnAddNewPhone(EventHandler<PersonSelectedActionEvent> handler){
+    public void setHandlerOnAddNewPhone(EventHandler<SelectPersonEvent> handler){
         this.handlerStateOfAddPhoneButton = handler;
+    }
+
+    public void setOnSelectPerson(EventHandler<SelectPersonEvent> selectPersonEventEventHandler){
+        this.selectPersonEventEventHandler = selectPersonEventEventHandler;
     }
 }
