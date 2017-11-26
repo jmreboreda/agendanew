@@ -47,6 +47,7 @@ public class MainController extends HBox {
     public void initialize() {
         personsSearch.setOnSearchPersons(this::onSearchPersons);
         personsOutput.setOnSelectPerson(this::onSelectPerson);
+        personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
     }
 
@@ -60,6 +61,7 @@ public class MainController extends HBox {
         }
         List<Person> persons = findPersonByNamePattern(pattern);
         refreshPersons(persons);
+        personInput.setPatternToRefreshPersons(pattern);
     }
 
     private void onSelectPerson(SelectPersonEvent selectPersonEvent){
