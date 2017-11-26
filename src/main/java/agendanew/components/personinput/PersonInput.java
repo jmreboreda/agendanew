@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 public class PersonInput extends GridPane{
@@ -28,22 +27,19 @@ public class PersonInput extends GridPane{
     @FXML
     private Button addPersonButton;
 
-    PersonManager manager = new PersonManager();
-
     public PersonInput() {
         ViewLoader.load(this, PERSON_INPUT_FXML);
         addPersonButton.setOnAction(this::onAddPerson);
     }
 
     private void onAddPerson(ActionEvent event){
-
         String message;
-        Person person = retrievePerson();
+        Person person = buildPerson();
 
         PersonController controller = new PersonController();
 
         if(person == null){
-            message = "none or incomplete data!!";
+            message = "none added person or incomplete data!";
         }else{
             Integer personId = controller.createPerson(person);
 
@@ -51,16 +47,10 @@ public class PersonInput extends GridPane{
                     + ", " + person.getName() + " with id: " + personId;
             personInputClear();
         }
-        logger.info("Added person " + message);
+        logger.info("Added person: " + message);
     }
 
-    public void onRemovePerson(MouseEvent event){
-        logger.info("inputComponentOfRemovePerson clicked ...");
-
-    }
-
-    public Person retrievePerson() {
-
+    public Person buildPerson() {
         if(lastName1.getText().isEmpty() ||
                 lastName2.getText().isEmpty() ||
                 name.getText().isEmpty()){

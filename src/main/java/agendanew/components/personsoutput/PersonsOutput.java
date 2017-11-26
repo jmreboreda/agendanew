@@ -23,9 +23,6 @@ public class PersonsOutput extends AnchorPane {
     private static final String PERSONS_OUTPUT_FXML = "/agendanew/personsoutput.fxml";
 
     private EventHandler<SelectPersonEvent> selectPersonEventEventHandler;
-    private EventHandler<ShowPhonesEvent> showPhonesEventEventHandler;
-    private EventHandler<SelectPersonEvent> handlerStateOfAddPhoneButton;
-
     @FXML
     private ListView<Person> personWhoMeetNamePattern;
 
@@ -34,7 +31,6 @@ public class PersonsOutput extends AnchorPane {
     }
 
     public void refresh(List<Person> persons) {
-
         ObservableList<Person> listPersonsWhoMatchPattern = FXCollections.observableList(persons);
 
         personWhoMeetNamePattern = new ListView<>(listPersonsWhoMatchPattern);
@@ -55,28 +51,9 @@ public class PersonsOutput extends AnchorPane {
     }
 
     private void onSelectPerson(Person person){
-
         logger.info("Selected person changed to -> " + person);
         SelectPersonEvent selectPersonEvent = new SelectPersonEvent(person);
         selectPersonEventEventHandler.handle(selectPersonEvent);
-
-    }
-
-    private void showPhones(Person person){
-
-        PhoneController controller = new PhoneController();
-        List<Phone> phonesList = controller.findPhoneByPerson(person);
-
-        final ShowPhonesEvent showPhonesEvent = new ShowPhonesEvent(phonesList);
-        showPhonesEventEventHandler.handle(showPhonesEvent);
-    }
-
-    public void setHandlerOnShowPhones(EventHandler<ShowPhonesEvent> handler){
-        this.showPhonesEventEventHandler = handler;
-    }
-
-    public void setHandlerOnAddNewPhone(EventHandler<SelectPersonEvent> handler){
-        this.handlerStateOfAddPhoneButton = handler;
     }
 
     public void setOnSelectPerson(EventHandler<SelectPersonEvent> selectPersonEventEventHandler){

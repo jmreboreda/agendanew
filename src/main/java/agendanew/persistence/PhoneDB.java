@@ -46,16 +46,6 @@ public class PhoneDB {
         return phonesListInit.size();
     }
 
-    public List<PhoneVO> findPhonesByPerson(Person person){
-        List<PhoneVO> phoneVOList = new ArrayList<>();
-        for(PhoneVO phoneVO : phonesListInit){
-            if(Objects.equals(phoneVO.getPersonId(), person.getId())){
-                phoneVOList.add(phoneVO);
-            }
-        }
-        return phoneVOList;
-    }
-
     public List<PhoneVO> findPhonesByPersonId(Integer id){
         List<PhoneVO> phoneVOList = new ArrayList<>();
         for(PhoneVO phoneVO : phonesListInit){
@@ -64,6 +54,5 @@ public class PhoneDB {
             }
         }
         return phoneVOList;
-
     }
 }

@@ -68,7 +68,6 @@ public class PersonVO {
         Integer personId = db.createPerson(personVO);
 
         return personId;
-
     }
 
     public List<PersonVO> findPersonByNamePattern(String pattern){

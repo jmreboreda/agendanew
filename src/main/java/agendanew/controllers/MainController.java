@@ -24,8 +24,6 @@ public class MainController extends HBox {
     private static final Logger logger = Logger.getLogger(MainController.class.getSimpleName());
     private static final String MAIN_FXML = "/agendanew/main.fxml";
 
-    private static final String SCHEDULE = "Agenda telefónica";
-
     public final Parent parent;
 
     @FXML
@@ -100,7 +98,7 @@ public class MainController extends HBox {
     private List<Phone> retrievePhones(Person person){
         PhoneController controller = new PhoneController();
 
-        return controller.findPhoneByPerson(person);
+        return controller.findPhonesByPersonId(person.getId());
     }
 
     private void refreshPersons(List<Person> persons) {

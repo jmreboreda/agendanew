@@ -17,26 +17,12 @@ public class PhoneManager {
     }
 
     public Integer createPhone(Phone phone){
-
         PhoneVO phoneVO = new PhoneVO();
         phoneVO.setId(null);
         phoneVO.setPhoneNumber(phone.getPhoneNumber());
         phoneVO.setPersonId(phone.getPersonId());
 
         return phoneVO.createPhone(phoneVO);
-    }
-
-    public List<Phone> findPhonesByPerson(Person person){
-
-        PhoneVO phoneVO = new PhoneVO();
-        List<PhoneVO> phoneVOList = phoneVO.findPhonesByPerson(person);
-
-        List<Phone> phoneList = new ArrayList<>();
-        for(PhoneVO phVO : phoneVOList){
-            Phone ph = new Phone(phVO.getId(),phVO.getPhoneNumber(),phVO.getPersonId());
-            phoneList.add(ph);
-        }
-        return phoneList;
     }
 
     public List<Phone> findPhonesByPersonId(Integer id){

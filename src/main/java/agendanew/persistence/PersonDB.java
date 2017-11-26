@@ -33,7 +33,6 @@ public class PersonDB {
             personsListInit.add(person7);
             personsListInit.add(person8);
         }
-
     }
 
     public Integer createPerson(PersonVO personVO){

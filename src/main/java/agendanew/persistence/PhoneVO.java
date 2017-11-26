@@ -11,7 +11,6 @@ public class PhoneVO {
     private String phoneNumber;
     private Integer personId;
 
-
     private List<PhoneVO> phoneListInit = new ArrayList<>();
 
     public PhoneVO(Integer id, String phoneNumber, Integer personId) {
@@ -56,22 +55,9 @@ public class PhoneVO {
     }
 
     public Integer createPhone(PhoneVO phoneVO){
-
         PhoneDB db = new PhoneDB();
-        Integer phoneId = db.createPhone(phoneVO);
 
-        return phoneId;
-
-    }
-
-    public List<PhoneVO> findPhonesByPerson(Person person){
-
-        PhoneDB db = new PhoneDB();
-        db.createPhoneDB();
-
-        List<PhoneVO> phoneVOList = db.findPhonesByPerson(person);
-
-        return phoneVOList;
+        return db.createPhone(phoneVO);
     }
 
     public List<PhoneVO> findPhonesByPersonId(Integer id){

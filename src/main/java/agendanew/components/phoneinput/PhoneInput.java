@@ -18,7 +18,6 @@ public class PhoneInput extends GridPane {
     private static final Logger logger = Logger.getLogger(PhoneInput.class.getSimpleName());
     private static final String PHONE_INPUT_FXML = "/agendanew/phoneinput.fxml";
 
-
     @FXML
     private TextField phoneNumberTextField;
     @FXML
@@ -29,7 +28,6 @@ public class PhoneInput extends GridPane {
     private Button exitButton;
 
     private Integer personIdToSavePhone;
-    private EventHandler<SelectPersonEvent> handler;
     private EventHandler<SavePhoneEvent> savePhoneEventEventHandler;
 
     public PhoneInput() {
@@ -40,7 +38,6 @@ public class PhoneInput extends GridPane {
     }
 
     private void onAddPhone(MouseEvent event){
-        String number = phoneNumberTextField.getText();
         Phone phone = new Phone(null, phoneNumberTextField.getText(), getPersonIdToSavePhone());
         SavePhoneEvent savePhoneEvent = new SavePhoneEvent(phone);
         savePhoneEventEventHandler.handle(savePhoneEvent);
@@ -56,17 +53,11 @@ public class PhoneInput extends GridPane {
     }
 
     public void setPhoneAddedButton(Boolean state){
-
         phoneAddButton.setDisable(!state);
     }
 
     public void setOnSavePhone(EventHandler<SavePhoneEvent> savePhoneEventEventHandler){
         this.savePhoneEventEventHandler = savePhoneEventEventHandler;
-    }
-
-    public void setPhoneRemoveButton(Boolean state){
-
-        phoneRemoveButton.setDisable(!state);
     }
 
     private void onExit(MouseEvent event){
