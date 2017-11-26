@@ -16,11 +16,11 @@ public class PersonController {
     }
 
 
-    public List<Person> createPerson(Person person){
+    public Integer createPerson(Person person){
 
-        List<Person> personList = manager.createPerson(person);
+        Integer personId = manager.createPerson(person);
 
-        return personList;
+        return personId;
 
     }
 

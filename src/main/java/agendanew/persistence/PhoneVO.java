@@ -73,4 +73,10 @@ public class PhoneVO {
 
         return phoneVOList;
     }
+
+    public List<PhoneVO> findPhonesByPersonId(Integer id){
+        PhoneDB db = new PhoneDB();
+
+        return db.findPhonesByPersonId(id);
+    }
 }

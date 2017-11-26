@@ -1,5 +1,7 @@
 package agendanew.components.phoneinput;
 
+import agendanew.bussines.Phone;
+import agendanew.events.SavePhoneEvent;
 import agendanew.events.SelectPersonEvent;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -14,44 +16,57 @@ import java.util.logging.Logger;
 public class PhoneInput extends GridPane {
 
     private static final Logger logger = Logger.getLogger(PhoneInput.class.getSimpleName());
+    private static final String PHONE_INPUT_FXML = "/agendanew/phoneinput.fxml";
 
 
     @FXML
-    private TextField phoneNumber;
+    private TextField phoneNumberTextField;
     @FXML
-    private Button phoneAddActivator;
+    private Button phoneAddButton;
     @FXML
-    private Button phoneRemoveActivator;
+    private Button phoneRemoveButton;
     @FXML
     private Button exitButton;
 
+    private Integer personIdToSavePhone;
     private EventHandler<SelectPersonEvent> handler;
+    private EventHandler<SavePhoneEvent> savePhoneEventEventHandler;
 
     public PhoneInput() {
-        ViewLoader.load(this, "/agendanew/phoneinput.fxml");
+        ViewLoader.load(this, PHONE_INPUT_FXML);
 
-        phoneAddActivator.setOnMouseClicked(this::onAddPhone);
+        phoneAddButton.setOnMouseClicked(this::onAddPhone);
         exitButton.setOnMouseClicked(this::onExit);
-
     }
 
     private void onAddPhone(MouseEvent event){
-        String number = "none!!";
-        if(!phoneNumber.getText().isEmpty()){
-            number = phoneNumber.getText();
-        }
-        logger.info("phoneAddActivator clicked ... and the phone number to add is: " + number);
-
+        String number = phoneNumberTextField.getText();
+        Phone phone = new Phone(null, phoneNumberTextField.getText(), getPersonIdToSavePhone());
+        SavePhoneEvent savePhoneEvent = new SavePhoneEvent(phone);
+        savePhoneEventEventHandler.handle(savePhoneEvent);
+        phoneNumberTextField.clear();
     }
 
-    public void setStateOfActivatorOfAddPhone(Boolean state){
-
-        phoneAddActivator.disableProperty().setValue(!state);
-        //phoneAddActivator.setDisable(state);
+    public void setPersonIdToSavePhone(Integer id){
+        this.personIdToSavePhone = id;
     }
 
-    public void setPhoneRemoveActivator(Boolean state){
-        phoneRemoveActivator.disableProperty().setValue(!state);
+    private Integer getPersonIdToSavePhone(){
+        return this.personIdToSavePhone;
+    }
+
+    public void setPhoneAddedButton(Boolean state){
+
+        phoneAddButton.setDisable(!state);
+    }
+
+    public void setOnSavePhone(EventHandler<SavePhoneEvent> savePhoneEventEventHandler){
+        this.savePhoneEventEventHandler = savePhoneEventEventHandler;
+    }
+
+    public void setPhoneRemoveButton(Boolean state){
+
+        phoneRemoveButton.setDisable(!state);
     }
 
     private void onExit(MouseEvent event){

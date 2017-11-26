@@ -25,6 +25,8 @@ public class PhoneDB {
             PhoneVO phone5 = new PhoneVO(5, "501501501", 5);
             PhoneVO phone6 = new PhoneVO(6, "696486497", 6);
             PhoneVO phone7 = new PhoneVO(7, "652321612", 7);
+            PhoneVO phone8 = new PhoneVO(8, "652321612", 8);
+            PhoneVO phone9 = new PhoneVO(9, "696486497", 8);
             phonesListInit.add(phone1);
             phonesListInit.add(phone2);
             phonesListInit.add(phone3);
@@ -32,6 +34,8 @@ public class PhoneDB {
             phonesListInit.add(phone5);
             phonesListInit.add(phone6);
             phonesListInit.add(phone7);
+            phonesListInit.add(phone8);
+            phonesListInit.add(phone9);
         }
     }
 
@@ -50,5 +54,16 @@ public class PhoneDB {
             }
         }
         return phoneVOList;
+    }
+
+    public List<PhoneVO> findPhonesByPersonId(Integer id){
+        List<PhoneVO> phoneVOList = new ArrayList<>();
+        for(PhoneVO phoneVO : phonesListInit){
+            if(Objects.equals(phoneVO.getPersonId(), id)){
+                phoneVOList.add(phoneVO);
+            }
+        }
+        return phoneVOList;
+
     }
 }

@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class PersonInput extends GridPane{
 
     private static final Logger logger = Logger.getLogger(PersonInput.class.getSimpleName());
+    private static final String PERSON_INPUT_FXML = "/agendanew/personinput.fxml";
 
     @FXML
     private TextField lastName1;
@@ -29,9 +30,8 @@ public class PersonInput extends GridPane{
 
     PersonManager manager = new PersonManager();
 
-
     public PersonInput() {
-        ViewLoader.load(this, "/agendanew/personinput.fxml");
+        ViewLoader.load(this, PERSON_INPUT_FXML);
         addPersonButton.setOnAction(this::onAddPerson);
     }
 
@@ -42,16 +42,16 @@ public class PersonInput extends GridPane{
 
         PersonController controller = new PersonController();
 
-        List<Person> personList = controller.createPerson(person);
-
         if(person == null){
             message = "none or incomplete data!!";
         }else{
+            Integer personId = controller.createPerson(person);
+
             message = person.getLastName1() + " " + person.getLastName2()
-                    + ", " + person.getName();
+                    + ", " + person.getName() + " with id: " + personId;
             personInputClear();
         }
-        logger.info("addPersonButton clicked with ... " + message);
+        logger.info("Added person " + message);
     }
 
     public void onRemovePerson(MouseEvent event){
@@ -61,11 +61,12 @@ public class PersonInput extends GridPane{
 
     public Person retrievePerson() {
 
-        if(lastName1.getText().isEmpty() || lastName2.getText().isEmpty() || name.getText().isEmpty()){
+        if(lastName1.getText().isEmpty() ||
+                lastName2.getText().isEmpty() ||
+                name.getText().isEmpty()){
             return null;
         }
-
-        return new Person(50, lastName1.getText(), lastName2.getText(), name.getText());
+        return new Person(null, lastName1.getText(), lastName2.getText(), name.getText());
     }
 
     private void personInputClear(){
@@ -73,5 +74,4 @@ public class PersonInput extends GridPane{
         lastName2.clear();
         name.clear();
     }
-
 }

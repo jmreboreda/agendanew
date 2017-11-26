@@ -62,12 +62,12 @@ public class PersonVO {
         this.personsListInit = personsListInit;
     }
 
-    public List<PersonVO> createPerson(PersonVO personVO){
+    public Integer createPerson(PersonVO personVO){
 
         PersonDB db = new PersonDB();
-        List<PersonVO> personVOLIst = db.createPerson(personVO);
+        Integer personId = db.createPerson(personVO);
 
-        return personVOLIst;
+        return personId;
 
     }
 

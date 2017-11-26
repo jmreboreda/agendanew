@@ -27,4 +27,10 @@ public class PhoneController {
 
         return phonesList;
     }
+
+    public List<Phone> findPhonesByPersonId(Integer id){
+        PhoneManager manager = new PhoneManager();
+
+        return manager.findPhonesByPersonId(id);
+    }
 }

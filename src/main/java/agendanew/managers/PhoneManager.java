@@ -38,4 +38,16 @@ public class PhoneManager {
         }
         return phoneList;
     }
+
+    public List<Phone> findPhonesByPersonId(Integer id){
+        PhoneVO phoneVO = new PhoneVO();
+        List<PhoneVO> phoneVOList = phoneVO.findPhonesByPersonId(id);
+
+        List<Phone> phoneList = new ArrayList<>();
+        for(PhoneVO phVO : phoneVOList){
+            Phone phone = new Phone(phVO.getId(), phVO.getPhoneNumber(), phVO.getPersonId());
+            phoneList.add(phone);
+        }
+        return phoneList;
+    }
 }
