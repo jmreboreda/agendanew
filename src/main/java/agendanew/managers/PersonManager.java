@@ -15,28 +15,26 @@ public class PersonManager {
     public PersonManager() {
     }
 
-    public void createPerson(Person person){
-
+    public Integer createPerson(Person person){
         PersonVO personVO = new PersonVO();
         personVO.setLastName1(person.getLastName1());
         personVO.setLastName2(person.getLastName2());
         personVO.setName(person.getName());
 
-        personVO.createPerson(personVO);
+        Integer personId = personVO.createPerson(personVO);
 
+        return personId;
     }
 
     public List<Person> findPersonByNamePattern(String pattern){
-
         PersonVO personVO = new PersonVO();
         List<PersonVO> personVOList = personVO.findPersonByNamePattern(pattern);
 
-        List<Person> personsList = new ArrayList<>();
-        for(PersonVO pVO :personVOList){
-            Person person = new Person(pVO.getId(), pVO.getLastName1(), pVO.getLastName2(), pVO.getName());
-            personsList.add(person);
+        List<Person> personList = new ArrayList<>();
+        for(PersonVO pVO : personVOList){
+            Person p = new Person(pVO.getId(), pVO.getLastName1(), pVO.getLastName2(), pVO.getName());
+            personList.add(p);
         }
-
-        return personsList;
+        return personList;
     }
 }

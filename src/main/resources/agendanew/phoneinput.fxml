@@ -20,7 +20,7 @@
    <children>
       <HBox>
          <children>
-            <TextField fx:id="phoneNumber" maxWidth="100.0" minWidth="125.0" prefHeight="26.0" promptText="Phone number">
+            <TextField fx:id="phoneNumberTextField" maxWidth="100.0" minWidth="125.0" prefHeight="26.0" promptText="Phone number">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -28,7 +28,7 @@
                   <Insets bottom="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="phoneAddActivator" disable="true" minWidth="75.0" mnemonicParsing="false" text="Añadir teléfono" textFill="#094d04">
+            <Button fx:id="phoneAddButton" disable="true" minWidth="75.0" mnemonicParsing="false" text="Añadir teléfono" textFill="#094d04">
                <HBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </HBox.margin>
@@ -43,7 +43,7 @@
             <Insets left="115.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="phoneRemoveActivator" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" text="Borrar teléfono seleccionado" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.rowIndex="1">
+      <Button fx:id="phoneRemoveButton" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" text="Borrar teléfono seleccionado" textAlignment="CENTER" textFill="#680606" wrapText="true" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="5.0" top="5.0" />
          </GridPane.margin>

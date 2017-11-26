@@ -20,48 +20,6 @@ public class PersonVO {
     }
 
     public PersonVO() {
-
-        if(personsListInit.isEmpty()){
-            createPersonVOList();
-        }
-    }
-
-    public void createPerson(PersonVO personVO){
-
-        personsListInit.add(personVO);
-
-    }
-
-    public List<PersonVO> findPersonByNamePattern(String pattern){
-
-        List<PersonVO> personsVOList = new ArrayList<>();
-        for(PersonVO personVO : personsListInit){
-            if(personVO.getLastName1().toLowerCase().contains(pattern.toLowerCase()) ||
-                    personVO.getLastName2().toLowerCase().contains(pattern.toLowerCase()) ||
-                    personVO.getName().toLowerCase().contains(pattern.toLowerCase())){
-                personsVOList.add(personVO);
-            }
-        }
-        return personsVOList;
-    }
-
-    public void createPersonVOList(){
-
-        PersonVO person1 = new PersonVO(1, "Bohr","","Niels");
-        PersonVO person2 = new PersonVO(2, "Einstein","","Albert");
-        PersonVO person3 = new PersonVO(3, "Feynman","","Richard P.");
-        PersonVO person4 = new PersonVO(4, "Gell-Man","","Murray");
-        PersonVO person5 = new PersonVO(5, "Higgs","","Peter W.");
-        PersonVO person6 = new PersonVO(6, "Nambu","","Yoichiro");
-        PersonVO person7 = new PersonVO(7, "Thorne","","Kip");
-
-        personsListInit.add(person1);
-        personsListInit.add(person2);
-        personsListInit.add(person3);
-        personsListInit.add(person4);
-        personsListInit.add(person5);
-        personsListInit.add(person6);
-        personsListInit.add(person7);
     }
 
     public Integer getId() {
@@ -102,5 +60,23 @@ public class PersonVO {
 
     public void setPersonsListInit(List<PersonVO> personsListInit) {
         this.personsListInit = personsListInit;
+    }
+
+    public Integer createPerson(PersonVO personVO){
+
+        PersonDB db = new PersonDB();
+        Integer personId = db.createPerson(personVO);
+
+        return personId;
+    }
+
+    public List<PersonVO> findPersonByNamePattern(String pattern){
+
+        PersonDB db = new PersonDB();
+        db.createPersonDB();
+
+        List<PersonVO> personVOList = db.findPersonByNamePattern(pattern);
+
+        return personVOList;
     }
 }
