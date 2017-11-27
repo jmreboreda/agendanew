@@ -37,5 +37,4 @@ public class PersonsSearch extends AnchorPane {
     public void setOnSearchPersons(EventHandler<SearchPersonsEvent> handler) {
         this.onNamePatternChangedEventHandler = handler;
     }
-
 }

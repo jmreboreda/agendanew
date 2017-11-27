@@ -16,10 +16,10 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/stylesheets/bordered_titled_pane.css").toExternalForm());
         primaryStage.setTitle("Gestoría MOLDES - María Elena González Moldes");
 
-        primaryStage.setMaxWidth(612);
-        primaryStage.setMaxHeight(650);
-        primaryStage.setMinWidth(612);
-        primaryStage.setMinHeight(650);
+        primaryStage.setMaxWidth(610);
+        primaryStage.setMaxHeight(625);
+        primaryStage.setMinWidth(610);
+        primaryStage.setMinHeight(625);
 
         primaryStage.setScene(scene);
         primaryStage.show();

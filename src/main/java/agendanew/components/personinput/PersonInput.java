@@ -3,8 +3,10 @@ package agendanew.components.personinput;
 import agendanew.bussines.Person;
 import agendanew.components.ViewLoader;
 import agendanew.controllers.PersonController;
+import agendanew.events.SearchPersonsEvent;
 import agendanew.managers.PersonManager;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -27,6 +29,9 @@ public class PersonInput extends GridPane{
     @FXML
     private Button addPersonButton;
 
+    private String patternToRefreshPersons;
+    private EventHandler<SearchPersonsEvent> searchPersonsEventEventHandler;
+
     public PersonInput() {
         ViewLoader.load(this, PERSON_INPUT_FXML);
         addPersonButton.setOnAction(this::onAddPerson);
@@ -48,6 +53,10 @@ public class PersonInput extends GridPane{
             personInputClear();
         }
         logger.info("Added person: " + message);
+        if(person != null) {
+            SearchPersonsEvent searchPersonsEvent = new SearchPersonsEvent(patternToRefreshPersons);
+            searchPersonsEventEventHandler.handle(searchPersonsEvent);
+        }
     }
 
     public Person buildPerson() {
@@ -63,5 +72,13 @@ public class PersonInput extends GridPane{
         lastName1.clear();
         lastName2.clear();
         name.clear();
+    }
+
+    public void setPatternToRefreshPersons(String pattern){
+        this.patternToRefreshPersons = pattern;
+    }
+
+    public void setOnAddPerson(EventHandler<SearchPersonsEvent> searchPersonsEventEventHandler){
+        this.searchPersonsEventEventHandler = searchPersonsEventEventHandler;
     }
 }

@@ -7,6 +7,7 @@ import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
+import agendanew.components.phonesoutput.PhoneXCell;
 import agendanew.components.phonesoutput.PhonesOutput;
 import agendanew.events.SavePhoneEvent;
 import agendanew.events.SearchPersonsEvent;
@@ -47,6 +48,7 @@ public class MainController extends HBox {
     public void initialize() {
         personsSearch.setOnSearchPersons(this::onSearchPersons);
         personsOutput.setOnSelectPerson(this::onSelectPerson);
+        personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
     }
 
@@ -60,6 +62,7 @@ public class MainController extends HBox {
         }
         List<Person> persons = findPersonByNamePattern(pattern);
         refreshPersons(persons);
+        personInput.setPatternToRefreshPersons(pattern);
     }
 
     private void onSelectPerson(SelectPersonEvent selectPersonEvent){

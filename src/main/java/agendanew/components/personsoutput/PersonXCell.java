@@ -41,6 +41,7 @@ public class PersonXCell extends ListCell<Person> {
         }
 
         private void onRemovePerson(){
+            Person person = getListView().getSelectionModel().getSelectedItem();
             getListView().getItems().remove(getItem());
         }
 }
