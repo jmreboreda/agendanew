@@ -47,7 +47,9 @@ public class PersonsOutput extends AnchorPane {
     }
 
     public void clear(){
-        personWhoMeetNamePattern.getItems().clear();
+        if(!personWhoMeetNamePattern.getItems().isEmpty()){
+            personWhoMeetNamePattern.getItems().clear();
+        }
     }
 
     private void onSelectPerson(Person person){

@@ -7,6 +7,7 @@ import agendanew.components.personinput.PersonInput;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
+import agendanew.components.phonesoutput.PhoneXCell;
 import agendanew.components.phonesoutput.PhonesOutput;
 import agendanew.events.SavePhoneEvent;
 import agendanew.events.SearchPersonsEvent;

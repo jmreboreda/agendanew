@@ -53,8 +53,10 @@ public class PersonInput extends GridPane{
             personInputClear();
         }
         logger.info("Added person: " + message);
-        SearchPersonsEvent searchPersonsEvent= new SearchPersonsEvent(patternToRefreshPersons);
-        searchPersonsEventEventHandler.handle(searchPersonsEvent);
+        if(person != null) {
+            SearchPersonsEvent searchPersonsEvent = new SearchPersonsEvent(patternToRefreshPersons);
+            searchPersonsEventEventHandler.handle(searchPersonsEvent);
+        }
     }
 
     public Person buildPerson() {
