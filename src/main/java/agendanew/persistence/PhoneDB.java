@@ -55,4 +55,14 @@ public class PhoneDB {
         }
         return phoneVOList;
     }
+
+    public void removePhoneToPerson(PhoneVO phoneVO, PersonVO personVO){
+        for(PhoneVO phVO : phonesListInit ){
+            if(phVO.getPersonId() == personVO.getId() &&
+                    phVO.getPhoneNumber() == phoneVO.getPhoneNumber()){
+                phonesListInit.remove(phVO);
+            }
+        }
+
+    }
 }

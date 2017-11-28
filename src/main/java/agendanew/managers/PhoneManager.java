@@ -36,4 +36,19 @@ public class PhoneManager {
         }
         return phoneList;
     }
+
+    public void removePhoneToPerson(Phone phone, Person person){
+        PhoneVO phoneVO = new PhoneVO();
+        phoneVO.setId(phone.getId());
+        phoneVO.setPhoneNumber(phone.getPhoneNumber());
+        phoneVO.setPersonId(phone.getPersonId());
+
+        PersonVO personVO = new PersonVO();
+        personVO.setId(person.getId());
+        personVO.setLastName1(person.getLastName1());
+        personVO.setLastName2(person.getLastName2());
+        personVO.setName(person.getName());
+
+        phoneVO.removePhoneToPerson(phoneVO, personVO);
+    }
 }

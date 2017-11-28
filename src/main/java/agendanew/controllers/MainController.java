@@ -9,6 +9,7 @@ import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
 import agendanew.components.phonesoutput.PhoneXCell;
 import agendanew.components.phonesoutput.PhonesOutput;
+import agendanew.events.RemovePhoneEvent;
 import agendanew.events.SavePhoneEvent;
 import agendanew.events.SearchPersonsEvent;
 import agendanew.events.SelectPersonEvent;
@@ -17,6 +18,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
+import java.beans.EventHandler;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -38,6 +40,7 @@ public class MainController extends HBox {
     @FXML
     private PhoneInput phoneInput;
 
+    private PhoneXCell phoneXCell = new PhoneXCell();
 
     public MainController() {
         this.setPadding(new Insets(15,10,5,10));

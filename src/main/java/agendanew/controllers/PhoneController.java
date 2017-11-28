@@ -25,4 +25,9 @@ public class PhoneController {
 
         return manager.findPhonesByPersonId(id);
     }
+
+    public void removePhoneToPerson(Phone phone, Person person){
+        PhoneManager manager = new PhoneManager();
+        manager.removePhoneToPerson(phone, person);
+    }
 }
