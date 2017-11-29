@@ -61,4 +61,8 @@ public class PersonsOutput extends AnchorPane {
     public void setOnSelectPerson(EventHandler<SelectPersonEvent> selectPersonEventEventHandler){
         this.selectPersonEventEventHandler = selectPersonEventEventHandler;
     }
+
+    public Person getSelectedPerson() {
+        return personWhoMeetNamePattern.getSelectionModel().getSelectedItem();
+    }
 }

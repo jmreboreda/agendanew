@@ -1,7 +1,8 @@
 package agendanew.components.phonesoutput;
 
-import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
+import agendanew.events.RemovePhoneEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Tooltip;
@@ -9,9 +10,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 
-import java.beans.EventHandler;
-
 public class PhoneXCell extends ListCell<Phone> {
+
+    private EventHandler<RemovePhoneEvent> removePhoneEventEventHandler;
 
     HBox hbox = new HBox();
     Label label = new Label("");
@@ -42,6 +43,12 @@ public class PhoneXCell extends ListCell<Phone> {
 
     private void onRemovePhone(){
         Phone phoneSelected = getListView().getSelectionModel().getSelectedItem();
+        RemovePhoneEvent removePhoneEvent = new RemovePhoneEvent(phoneSelected);
+        removePhoneEventEventHandler.handle(removePhoneEvent);
         getListView().getItems().remove(getItem());
+    }
+
+    public void setRemovePhoneEventHandler(EventHandler<RemovePhoneEvent> removePhoneEventHandler){
+        this.removePhoneEventEventHandler = removePhoneEventHandler;
     }
 }
