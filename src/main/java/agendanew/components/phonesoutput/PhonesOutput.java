@@ -33,6 +33,8 @@ public class PhonesOutput extends AnchorPane {
 
     private EventHandler<ShowPhonesEvent> showPhonesEventEventHandler;
 
+    private EventHandler<RemovePhoneEvent> removePhoneEventEventHandler;
+
     public PhonesOutput() {
         ViewLoader.load(this, PHONES_OUTPUT_FXML);
     }
@@ -52,7 +54,9 @@ public class PhonesOutput extends AnchorPane {
 
             phones = new ListView<>(listPersonsWhoMatchPattern);
             phones.setCellFactory((ListView<Phone> param) -> {
-                return new PhoneXCell();
+                PhoneXCell phoneXCell = new PhoneXCell();
+                phoneXCell.setRemovePhoneEventHandler(this.removePhoneEventEventHandler);
+                return phoneXCell;
             });
 
             phones.getSelectionModel().selectedItemProperty()
@@ -67,6 +71,11 @@ public class PhonesOutput extends AnchorPane {
 
     private void onSelectedPhone(Phone newValue){
         logger.info("Selected phone is ... " + newValue);
+    }
+
+    public void setOnRemovePhone(EventHandler<RemovePhoneEvent> removePhoneEventEventHandler){
+        this.removePhoneEventEventHandler = removePhoneEventEventHandler;
+
     }
 
     public void clear(){

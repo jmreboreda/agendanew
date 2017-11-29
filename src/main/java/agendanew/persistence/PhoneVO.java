@@ -67,8 +67,8 @@ public class PhoneVO {
         return db.findPhonesByPersonId(id);
     }
 
-    public void removePhoneToPerson(PhoneVO phoneVO, PersonVO personVO){
+    public void removePhone(PhoneVO phoneVO){
         PhoneDB db = new PhoneDB();
-        db.removePhoneToPerson(phoneVO, personVO);
+        db.removePhone(phoneVO);
     }
 }

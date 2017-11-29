@@ -1,12 +1,8 @@
 package agendanew.persistence;
 
-import agendanew.bussines.Person;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class PhoneDB {
 
@@ -40,7 +36,10 @@ public class PhoneDB {
     }
 
     public Integer createPhone(PhoneVO phoneVO){
-        phoneVO.setId(phonesListInit.size() + 1);
+        if(existPhone(phoneVO)){
+            return null;
+        }
+        phoneVO.setId(phonesListInit.size());
         phonesListInit.add(phoneVO);
 
         return phonesListInit.size();
@@ -56,13 +55,23 @@ public class PhoneDB {
         return phoneVOList;
     }
 
-    public void removePhoneToPerson(PhoneVO phoneVO, PersonVO personVO){
+    public void removePhone(PhoneVO phoneVO){
         for(PhoneVO phVO : phonesListInit ){
-            if(phVO.getPersonId() == personVO.getId() &&
-                    phVO.getPhoneNumber() == phoneVO.getPhoneNumber()){
+            if( phVO.getPhoneNumber().equals(phoneVO.getPhoneNumber()) &&
+                    phVO.getPersonId().equals(phoneVO.getPersonId())){
                 phonesListInit.remove(phVO);
+                break;
             }
         }
+    }
 
+    private Boolean existPhone(PhoneVO phoneVO){
+        for(PhoneVO phVO : phonesListInit){
+            if(phVO.getPhoneNumber().equals(phoneVO.getPhoneNumber()) &&
+                    phVO.getPersonId().equals(phoneVO.getPersonId())){
+                return true;
+            }
+        }
+        return false;
     }
 }

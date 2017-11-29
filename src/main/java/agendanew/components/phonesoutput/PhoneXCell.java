@@ -1,8 +1,6 @@
 package agendanew.components.phonesoutput;
 
-import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
-import agendanew.controllers.PhoneController;
 import agendanew.events.RemovePhoneEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -45,8 +43,12 @@ public class PhoneXCell extends ListCell<Phone> {
 
     private void onRemovePhone(){
         Phone phoneSelected = getListView().getSelectionModel().getSelectedItem();
-//        PhoneController controller = new PhoneController();
-//        controller.removePhoneToPerson(phoneSelected, personSelectToDeletePhone);
+        RemovePhoneEvent removePhoneEvent = new RemovePhoneEvent(phoneSelected);
+        removePhoneEventEventHandler.handle(removePhoneEvent);
         getListView().getItems().remove(getItem());
+    }
+
+    public void setRemovePhoneEventHandler(EventHandler<RemovePhoneEvent> removePhoneEventHandler){
+        this.removePhoneEventEventHandler = removePhoneEventHandler;
     }
 }

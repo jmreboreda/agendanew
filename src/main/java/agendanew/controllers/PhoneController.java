@@ -1,8 +1,6 @@
 package agendanew.controllers;
 
-import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
-import agendanew.managers.PersonManager;
 import agendanew.managers.PhoneManager;
 
 import java.util.List;
@@ -26,8 +24,8 @@ public class PhoneController {
         return manager.findPhonesByPersonId(id);
     }
 
-    public void removePhoneToPerson(Phone phone, Person person){
+    public void removePhone(Phone phone){
         PhoneManager manager = new PhoneManager();
-        manager.removePhoneToPerson(phone, person);
+        manager.removePhone(phone);
     }
 }

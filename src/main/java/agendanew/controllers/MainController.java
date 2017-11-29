@@ -18,7 +18,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
-import java.beans.EventHandler;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -42,6 +41,8 @@ public class MainController extends HBox {
 
     private PhoneXCell phoneXCell = new PhoneXCell();
 
+    private Phone phoneToRemove;
+
     public MainController() {
         this.setPadding(new Insets(15,10,5,10));
         this.parent = ViewLoader.load(this, MAIN_FXML);
@@ -53,6 +54,7 @@ public class MainController extends HBox {
         personsOutput.setOnSelectPerson(this::onSelectPerson);
         personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
+        phonesOutput.setOnRemovePhone(this::onRemovePhone);
     }
 
     private void onSearchPersons(SearchPersonsEvent searchPersonsEvent){
@@ -86,6 +88,12 @@ public class MainController extends HBox {
             List<Phone> phones = findPhonesByPersonId(phone.getPersonId());
             refreshPhones(phones);
         }
+    }
+
+    private void onRemovePhone(RemovePhoneEvent removePhoneEvent){
+        Phone phone = removePhoneEvent.getPhone();
+        PhoneController controller = new PhoneController();
+        controller.removePhone(phone);
     }
 
     private List<Person> findPersonByNamePattern(String pattern){

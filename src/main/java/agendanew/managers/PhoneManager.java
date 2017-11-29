@@ -2,7 +2,6 @@ package agendanew.managers;
 
 import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
-import agendanew.persistence.PersonVO;
 import agendanew.persistence.PhoneVO;
 
 import java.util.ArrayList;
@@ -37,18 +36,12 @@ public class PhoneManager {
         return phoneList;
     }
 
-    public void removePhoneToPerson(Phone phone, Person person){
+    public void removePhone(Phone phone){
         PhoneVO phoneVO = new PhoneVO();
         phoneVO.setId(phone.getId());
         phoneVO.setPhoneNumber(phone.getPhoneNumber());
         phoneVO.setPersonId(phone.getPersonId());
 
-        PersonVO personVO = new PersonVO();
-        personVO.setId(person.getId());
-        personVO.setLastName1(person.getLastName1());
-        personVO.setLastName2(person.getLastName2());
-        personVO.setName(person.getName());
-
-        phoneVO.removePhoneToPerson(phoneVO, personVO);
+        phoneVO.removePhone(phoneVO);
     }
 }
