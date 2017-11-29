@@ -70,6 +70,11 @@ public class PersonVO {
         return personId;
     }
 
+    public void removePerson(PersonVO personVO) {
+        PersonDB db = new PersonDB();
+        db.removePerson(personVO);
+    }
+
     public List<PersonVO> findPersonByNamePattern(String pattern){
 
         PersonDB db = new PersonDB();

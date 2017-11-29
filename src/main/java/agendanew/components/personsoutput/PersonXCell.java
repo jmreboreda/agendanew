@@ -1,6 +1,11 @@
 package agendanew.components.personsoutput;
 
 import agendanew.bussines.Person;
+import agendanew.bussines.Phone;
+import agendanew.events.RemovePersonEvent;
+import agendanew.events.RemovePhoneEvent;
+import agendanew.utilities.Message;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -11,6 +16,8 @@ import javafx.scene.layout.Priority;
 import javafx.event.ActionEvent;
 
 public class PersonXCell extends ListCell<Person> {
+
+    private EventHandler<RemovePersonEvent> removePersonEventEventHandler;
 
         HBox hbox = new HBox();
         Label label = new Label("");
@@ -40,8 +47,17 @@ public class PersonXCell extends ListCell<Person> {
             }
         }
 
-        private void onRemovePerson(){
-            Person person = getListView().getSelectionModel().getSelectedItem();
+    private void onRemovePerson(){
+        Message message = new Message();
+        Person personSelected = getListView().getSelectionModel().getSelectedItem();
+        if (message.confirmationMessage("Mensaje del sistema","¿ Desea eliminar a " + personSelected.toString() + " ?")) {
+            RemovePersonEvent removePersonEvent = new RemovePersonEvent(personSelected);
+            removePersonEventEventHandler.handle(removePersonEvent);
             getListView().getItems().remove(getItem());
         }
+    }
+
+    public void setRemovePersonEventHandler(EventHandler<RemovePersonEvent> removePersonEventHandler){
+        this.removePersonEventEventHandler = removePersonEventHandler;
+    }
 }

@@ -1,5 +1,6 @@
 package agendanew.controllers;
 
+import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
 import agendanew.managers.PhoneManager;
 
@@ -18,14 +19,21 @@ public class PhoneController {
         return phoneId;
     }
 
-    public List<Phone> findPhonesByPersonId(Integer id){
+    public void removeAllPhonesOfPerson(Person person){
         PhoneManager manager = new PhoneManager();
-
-        return manager.findPhonesByPersonId(id);
+        manager.removeAllPhonesOfPerson(person);
     }
+
+
 
     public void removePhone(Phone phone){
         PhoneManager manager = new PhoneManager();
         manager.removePhone(phone);
+    }
+
+    public List<Phone> findPhonesByPersonId(Integer id){
+        PhoneManager manager = new PhoneManager();
+
+        return manager.findPhonesByPersonId(id);
     }
 }

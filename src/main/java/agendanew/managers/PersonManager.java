@@ -26,6 +26,17 @@ public class PersonManager {
         return personId;
     }
 
+
+    public void removePerson(Person person){
+        PersonVO personVO = new PersonVO();
+        personVO.setId(person.getId());
+        personVO.setLastName1(person.getLastName1());
+        personVO.setLastName2(person.getLastName2());
+        personVO.setName(person.getName());
+
+        personVO.removePerson(personVO);
+    }
+
     public List<Person> findPersonByNamePattern(String pattern){
         PersonVO personVO = new PersonVO();
         List<PersonVO> personVOList = personVO.findPersonByNamePattern(pattern);

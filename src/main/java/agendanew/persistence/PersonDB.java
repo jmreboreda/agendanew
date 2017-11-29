@@ -1,5 +1,7 @@
 package agendanew.persistence;
 
+import agendanew.bussines.Person;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,10 +38,19 @@ public class PersonDB {
     }
 
     public Integer createPerson(PersonVO personVO){
-        personVO.setId(personsListInit.size() + 1);
+        personVO.setId(personsListInit.size());
         personsListInit.add(personVO);
 
         return personsListInit.size();
+    }
+
+    public void removePerson(PersonVO personVO) {
+        for(PersonVO pVO : personsListInit){
+            if(pVO.getId() == personVO.getId()){
+                personsListInit.remove(pVO);
+                break;
+            }
+        }
     }
 
     public List<PersonVO> findPersonByNamePattern(String pattern){

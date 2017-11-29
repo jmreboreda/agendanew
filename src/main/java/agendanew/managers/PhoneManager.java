@@ -44,4 +44,9 @@ public class PhoneManager {
 
         phoneVO.removePhone(phoneVO);
     }
+
+    public void removeAllPhonesOfPerson(Person person){
+        PhoneVO phoneVO = new PhoneVO();
+        phoneVO.removeAllPhonesOfPerson(person);
+    }
 }

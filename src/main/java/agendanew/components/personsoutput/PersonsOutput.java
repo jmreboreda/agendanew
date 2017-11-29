@@ -3,6 +3,8 @@ package agendanew.components.personsoutput;
 import agendanew.bussines.Person;
 import agendanew.bussines.Phone;
 import agendanew.controllers.PhoneController;
+import agendanew.events.RemovePersonEvent;
+import agendanew.events.RemovePhoneEvent;
 import agendanew.events.SelectPersonEvent;
 import agendanew.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
@@ -26,6 +28,8 @@ public class PersonsOutput extends AnchorPane {
     @FXML
     private ListView<Person> personWhoMeetNamePattern;
 
+    private EventHandler<RemovePersonEvent> removePersonEventEventHandler;
+
     public PersonsOutput() {
         ViewLoader.load(this, PERSONS_OUTPUT_FXML);
     }
@@ -35,7 +39,9 @@ public class PersonsOutput extends AnchorPane {
 
         personWhoMeetNamePattern = new ListView<>(listPersonsWhoMatchPattern);
         personWhoMeetNamePattern.setCellFactory(param -> {
-            return new PersonXCell();
+            PersonXCell personXCell = new PersonXCell();
+            personXCell.setRemovePersonEventHandler(this.removePersonEventEventHandler);
+            return personXCell;
         });
 
         personWhoMeetNamePattern.setMinWidth(295);
@@ -60,6 +66,10 @@ public class PersonsOutput extends AnchorPane {
 
     public void setOnSelectPerson(EventHandler<SelectPersonEvent> selectPersonEventEventHandler){
         this.selectPersonEventEventHandler = selectPersonEventEventHandler;
+    }
+
+    public void setOnRemovePerson(EventHandler<RemovePersonEvent> removePersonEventEventHandler){
+        this.removePersonEventEventHandler = removePersonEventEventHandler;
     }
 
     public Person getSelectedPerson() {

@@ -9,10 +9,7 @@ import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
 import agendanew.components.phonesoutput.PhoneXCell;
 import agendanew.components.phonesoutput.PhonesOutput;
-import agendanew.events.RemovePhoneEvent;
-import agendanew.events.SavePhoneEvent;
-import agendanew.events.SearchPersonsEvent;
-import agendanew.events.SelectPersonEvent;
+import agendanew.events.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -52,6 +49,7 @@ public class MainController extends HBox {
     public void initialize() {
         personsSearch.setOnSearchPersons(this::onSearchPersons);
         personsOutput.setOnSelectPerson(this::onSelectPerson);
+        personsOutput.setOnRemovePerson(this::onRemovePerson);
         personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
         phonesOutput.setOnRemovePhone(this::onRemovePhone);
@@ -94,6 +92,15 @@ public class MainController extends HBox {
         Phone phone = removePhoneEvent.getPhone();
         PhoneController controller = new PhoneController();
         controller.removePhone(phone);
+    }
+
+    private void onRemovePerson(RemovePersonEvent removePersonEvent){
+        Person person = removePersonEvent.getPerson();
+        PersonController personController = new PersonController();
+        personController.removePerson(person);
+
+        PhoneController phoneController = new PhoneController();
+        phoneController.removeAllPhonesOfPerson(person);
     }
 
     private List<Person> findPersonByNamePattern(String pattern){

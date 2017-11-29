@@ -1,7 +1,6 @@
 package agendanew.persistence;
 
 import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,5 +69,10 @@ public class PhoneVO {
     public void removePhone(PhoneVO phoneVO){
         PhoneDB db = new PhoneDB();
         db.removePhone(phoneVO);
+    }
+
+    public void removeAllPhonesOfPerson(Person person){
+        PhoneDB db = new PhoneDB();
+        db.removeAllPhonesOfPerson(person);
     }
 }
