@@ -4,14 +4,13 @@ import agendanew.bussines.Person;
 import agendanew.components.ViewLoader;
 import agendanew.controllers.PersonController;
 import agendanew.events.SearchPersonsEvent;
-import agendanew.managers.PersonManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.logging.Logger;
 
@@ -53,7 +52,7 @@ public class PersonInput extends GridPane{
             personInputClear();
         }
         logger.info("Added person: " + message);
-        if(person != null) {
+        if(person != null && patternToRefreshPersons !=  null) {
             SearchPersonsEvent searchPersonsEvent = new SearchPersonsEvent(patternToRefreshPersons);
             searchPersonsEventEventHandler.handle(searchPersonsEvent);
         }
@@ -65,7 +64,11 @@ public class PersonInput extends GridPane{
                 name.getText().isEmpty()){
             return null;
         }
-        return new Person(null, lastName1.getText(), lastName2.getText(), name.getText());
+        String capLastName1 = WordUtils.capitalize(lastName1.getText());
+        String capLastName2 = WordUtils.capitalize(lastName2.getText());
+        String capName = WordUtils.capitalize(name.getText());
+
+        return new Person(null, capLastName1, capLastName2, capName);
     }
 
     private void personInputClear(){

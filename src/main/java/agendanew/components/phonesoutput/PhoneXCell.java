@@ -2,6 +2,7 @@ package agendanew.components.phonesoutput;
 
 import agendanew.bussines.Phone;
 import agendanew.events.RemovePhoneEvent;
+import agendanew.utilities.Message;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -42,10 +43,13 @@ public class PhoneXCell extends ListCell<Phone> {
     }
 
     private void onRemovePhone(){
+        Message message = new Message();
         Phone phoneSelected = getListView().getSelectionModel().getSelectedItem();
-        RemovePhoneEvent removePhoneEvent = new RemovePhoneEvent(phoneSelected);
-        removePhoneEventEventHandler.handle(removePhoneEvent);
-        getListView().getItems().remove(getItem());
+        if (message.confirmationMessage("Mensaje del sistema","¿ Desea borrar el teléfono " + phoneSelected.getPhoneNumber() + " ?")) {
+            RemovePhoneEvent removePhoneEvent = new RemovePhoneEvent(phoneSelected);
+            removePhoneEventEventHandler.handle(removePhoneEvent);
+            getListView().getItems().remove(getItem());
+        }
     }
 
     public void setRemovePhoneEventHandler(EventHandler<RemovePhoneEvent> removePhoneEventHandler){
