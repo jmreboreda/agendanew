@@ -101,6 +101,7 @@ public class MainController extends HBox {
 
         PhoneController phoneController = new PhoneController();
         phoneController.removeAllPhonesOfPerson(person);
+        phonesOutput.clear();
     }
 
     private List<Person> findPersonByNamePattern(String pattern){

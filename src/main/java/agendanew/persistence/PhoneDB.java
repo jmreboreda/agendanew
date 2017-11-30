@@ -1,10 +1,12 @@
 package agendanew.persistence;
 
 import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.utilities.Message;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,8 +63,8 @@ public class PhoneDB {
 
     public void removePhone(PhoneVO phoneVO){
         for(PhoneVO phVO : phonesListInit ){
-            if( phVO.getPhoneNumber().equals(phoneVO.getPhoneNumber()) &&
-                    phVO.getPersonId().equals(phoneVO.getPersonId())){
+            if(Objects.equals(phVO.getPhoneNumber(), phoneVO.getPhoneNumber()) &&
+                    Objects.equals(phVO.getPersonId(), phoneVO.getPersonId())){
                 phonesListInit.remove(phVO);
                 break;
             }
@@ -71,7 +73,7 @@ public class PhoneDB {
 
     public void removeAllPhonesOfPerson(Person person){
         for(PhoneVO phoneVO : phonesListInit){
-            if(phoneVO.getPersonId() == person.getId()){
+            if(Objects.equals(phoneVO.getPersonId(), person.getId())){
                 phoneVO.setPersonId(-1);
             }
         }
@@ -79,8 +81,10 @@ public class PhoneDB {
 
     private Boolean existPhone(PhoneVO phoneVO){
         for(PhoneVO phVO : phonesListInit){
-            if(phVO.getPhoneNumber().equals(phoneVO.getPhoneNumber()) &&
-                    phVO.getPersonId().equals(phoneVO.getPersonId())){
+            if(Objects.equals(phVO.getPhoneNumber(), phoneVO.getPhoneNumber()) &&
+                    Objects.equals(phVO.getPersonId(), phoneVO.getPersonId())){
+                Message message = new Message();
+                message.warningMessage("Información del sistema","El teléfono " + phoneVO.getPhoneNumber() + " ya existe.");
                 return true;
             }
         }

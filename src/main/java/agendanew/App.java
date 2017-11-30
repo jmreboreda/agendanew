@@ -8,8 +8,11 @@ import agendanew.controllers.MainController;
 
 public class App extends Application {
 
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        this.primaryStage = primaryStage;
         final MainController mainController = new MainController();
         BorderedTitledPane btp = new BorderedTitledPane("Agenda telefónica", mainController);
         final Scene scene = new Scene(btp);
@@ -23,6 +26,10 @@ public class App extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static Stage getStage(){
+        return primaryStage;
     }
 
     public static void main(String[] args) {
