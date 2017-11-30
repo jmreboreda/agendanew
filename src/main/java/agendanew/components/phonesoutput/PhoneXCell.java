@@ -46,6 +46,7 @@ public class PhoneXCell extends ListCell<Phone> {
         Message message = new Message();
         Phone phoneSelected = getListView().getSelectionModel().getSelectedItem();
         if (message.confirmationMessage("Mensaje del sistema","¿ Desea borrar el teléfono " + phoneSelected.getPhoneNumber() + " ?")) {
+            phoneSelected.setPhoneNumber(phoneSelected.getPhoneNumber().replace(" ", ""));
             RemovePhoneEvent removePhoneEvent = new RemovePhoneEvent(phoneSelected);
             removePhoneEventEventHandler.handle(removePhoneEvent);
             getListView().getItems().remove(getItem());

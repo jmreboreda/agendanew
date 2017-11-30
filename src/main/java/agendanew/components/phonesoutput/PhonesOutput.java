@@ -15,8 +15,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 
 public class PhonesOutput extends AnchorPane {
@@ -50,6 +52,7 @@ public class PhonesOutput extends AnchorPane {
             this.phones.getItems().clear();
         }
         else {
+            phonesList = format(phonesList);
             ObservableList<Phone> listPersonsWhoMatchPattern = FXCollections.observableList(phonesList);
 
             phones = new ListView<>(listPersonsWhoMatchPattern);
@@ -76,6 +79,17 @@ public class PhonesOutput extends AnchorPane {
     public void setOnRemovePhone(EventHandler<RemovePhoneEvent> removePhoneEventEventHandler){
         this.removePhoneEventEventHandler = removePhoneEventEventHandler;
 
+    }
+
+    private List<Phone> format(List<Phone> phones){
+
+        List<Phone> phoneList = new ArrayList<>();
+        for(Phone phone : phones){
+            String formattedStringPhone = phone.getPhoneNumber().substring(0,3) + " " + phone.getPhoneNumber().substring(3,6) + " " + phone.getPhoneNumber().substring(6,9);
+            Phone phoneFormatted = new Phone(phone.getId(), formattedStringPhone, phone.getPersonId());
+            phoneList.add(phoneFormatted);
+        }
+        return phoneList;
     }
 
     public void clear(){
