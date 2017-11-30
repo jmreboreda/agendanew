@@ -15,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -101,6 +102,7 @@ public class MainController extends HBox {
 
         PhoneController phoneController = new PhoneController();
         phoneController.removeAllPhonesOfPerson(person);
+        //refreshPhones(new ArrayList<Phone>());
         phonesOutput.clear();
     }
 
