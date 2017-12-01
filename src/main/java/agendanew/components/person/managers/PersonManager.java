@@ -1,6 +1,7 @@
 package agendanew.components.person.managers;
 
 import agendanew.domain.Person;
+import agendanew.persistence.PersonDAO;
 import agendanew.persistence.PersonVO;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ public class PersonManager {
     }
 
     public List<Person> findAllFirstPersonList(){
-        return new PersonVO().findAllFirstPersonList();
+        PersonDAO personDAO = new PersonDAO();
+
+        return personDAO.findAllFirstPersonList();
     }
 
     public Integer createPerson(Person person){
@@ -25,7 +28,8 @@ public class PersonManager {
         personVO.setLastName2(person.getLastName2());
         personVO.setName(person.getName());
 
-        Integer personId = personVO.createPerson(personVO);
+        PersonDAO personDAO = new PersonDAO();
+        Integer personId = personDAO.create(personVO);
 
         return personId;
     }
@@ -37,17 +41,18 @@ public class PersonManager {
         personVO.setLastName2(person.getLastName2());
         personVO.setName(person.getName());
 
-        personVO.removePerson(personVO);
+        PersonDAO personDAO = new PersonDAO();
+        personDAO.remove(personVO);
     }
 
     public List<Person> findPersonByNamePattern(String pattern){
-        PersonVO personVO = new PersonVO();
-        List<PersonVO> personVOList = personVO.findPersonByNamePattern(pattern);
+        PersonDAO personDAO = new PersonDAO();
+        List<PersonVO> personVOList = personDAO.findPersonByNamePattern(pattern);
 
         List<Person> personList = new ArrayList<>();
         for(PersonVO pVO : personVOList){
-            Person p = new Person(pVO.getId(), pVO.getLastName1(), pVO.getLastName2(), pVO.getName());
-            personList.add(p);
+            Person person = new Person(pVO.getId(), pVO.getLastName1(), pVO.getLastName2(), pVO.getName());
+            personList.add(person);
         }
         return personList;
     }

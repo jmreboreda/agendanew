@@ -64,39 +64,4 @@ public class PersonVO {
     public void setPersonsListInit(List<PersonVO> personsListInit) {
         this.personsListInit = personsListInit;
     }
-
-    public List<Person> findAllFirstPersonList(){
-        PersonDB db = new PersonDB();
-        List<PersonVO> personVOList = db.findAllFirstPersonList();
-        List<Person> personList = new ArrayList<>();
-        for(PersonVO personVO : personVOList){
-            Person person = new Person(
-                    personVO.getId(),
-                    personVO.getLastName1(),
-                    personVO.getLastName2(),
-                    personVO.getName());
-            personList.add(person);
-        }
-        return personList;
-    }
-
-    public Integer createPerson(PersonVO personVO){
-
-        PersonDB db = new PersonDB();
-
-        return db.createPerson(personVO);
-    }
-
-    public void removePerson(PersonVO personVO) {
-        PersonDB db = new PersonDB();
-        db.removePerson(personVO);
-    }
-
-    public List<PersonVO> findPersonByNamePattern(String pattern){
-
-        PersonDB db = new PersonDB();
-        db.createPersonDB();
-
-        return db.findPersonByNamePattern(pattern);
-    }
 }

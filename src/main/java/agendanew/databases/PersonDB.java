@@ -47,7 +47,7 @@ public class PersonDB {
         return orderedFirstPersonsList;
     }
 
-    public Integer createPerson(PersonVO personVO){
+    public Integer create(PersonVO personVO){
         personVO.setId(personsListInit.size());
         personsListInit.add(personVO);
 
