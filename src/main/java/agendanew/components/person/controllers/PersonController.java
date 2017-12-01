@@ -1,7 +1,7 @@
 package agendanew.components.person.controllers;
 
 import agendanew.domain.Person;
-import agendanew.managers.PersonManager;
+import agendanew.components.person.managers.PersonManager;
 
 import java.util.List;
 
@@ -10,6 +10,10 @@ public class PersonController {
     PersonManager manager = new PersonManager();
 
     public PersonController() {
+    }
+
+    public List<Person> findAllFirstPersonList(){
+        return new PersonManager().findAllFirstPersonList();
     }
 
     public Integer createPerson(Person person){

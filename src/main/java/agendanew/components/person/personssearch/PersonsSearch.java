@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class PersonsSearch extends AnchorPane {
 
     private static final Logger logger = Logger.getLogger(PersonsSearch.class.getSimpleName());
-    private static final String PERSONS_SEARCH_FXML = "/agendanew/personssearch.fxml";
+    private static final String PERSONS_SEARCH_FXML = "/agendanew_fxml/personssearch.fxml";
     private EventHandler<SearchPersonsEvent> onNamePatternChangedEventHandler;
 
     @FXML

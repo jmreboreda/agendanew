@@ -26,6 +26,7 @@ public class PhoneDB {
             PhoneVO phone7 = new PhoneVO(7, "652321612", 7);
             PhoneVO phone8 = new PhoneVO(8, "652321612", 8);
             PhoneVO phone9 = new PhoneVO(9, "696486497", 8);
+            PhoneVO phone10 = new PhoneVO(10, "986999666", 9);
             phonesListInit.add(phone1);
             phonesListInit.add(phone2);
             phonesListInit.add(phone3);
@@ -35,6 +36,7 @@ public class PhoneDB {
             phonesListInit.add(phone7);
             phonesListInit.add(phone8);
             phonesListInit.add(phone9);
+            phonesListInit.add(phone10);
         }
     }
 

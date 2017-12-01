@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class PersonInput extends GridPane{
 
     private static final Logger logger = Logger.getLogger(PersonInput.class.getSimpleName());
-    private static final String PERSON_INPUT_FXML = "/agendanew/personinput.fxml";
+    private static final String PERSON_INPUT_FXML = "/agendanew_fxml/personinput.fxml";
 
     @FXML
     private TextField lastName1;
@@ -51,8 +51,8 @@ public class PersonInput extends GridPane{
                     + ", " + person.getName() + " with id: " + personId;
             personInputClear();
         }
-        logger.info("Added person: " + message);
-        if(person != null && patternToRefreshPersons !=  null) {
+        if(person != null) {
+            logger.info("Added person: " + message);
             SearchPersonsEvent searchPersonsEvent = new SearchPersonsEvent(patternToRefreshPersons);
             searchPersonsEventEventHandler.handle(searchPersonsEvent);
         }
@@ -78,7 +78,11 @@ public class PersonInput extends GridPane{
     }
 
     public void setPatternToRefreshPersons(String pattern){
-        this.patternToRefreshPersons = pattern;
+        if(pattern == null){
+            this.patternToRefreshPersons = "";
+        }else{
+            this.patternToRefreshPersons = pattern;
+        }
     }
 
     public void setOnAddPerson(EventHandler<SearchPersonsEvent> searchPersonsEventEventHandler){

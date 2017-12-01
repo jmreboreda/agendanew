@@ -2,6 +2,7 @@ package agendanew.components;
 
 import agendanew.components.person.controllers.PersonController;
 import agendanew.components.phone.controllers.PhoneController;
+import agendanew.databases.PersonDataBase;
 import agendanew.domain.Person;
 import agendanew.domain.Phone;
 import agendanew.components.person.personinput.PersonInput;
@@ -26,7 +27,7 @@ import java.util.logging.Logger;
 public class MainController extends HBox {
 
     private static final Logger logger = Logger.getLogger(MainController.class.getSimpleName());
-    private static final String MAIN_FXML = "/agendanew/main.fxml";
+    private static final String MAIN_FXML = "/agendanew_fxml/main.fxml";
 
     public final Parent parent;
 
@@ -58,14 +59,22 @@ public class MainController extends HBox {
         personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
         phonesOutput.setOnRemovePhone(this::onRemovePhone);
+        new PersonDataBase();
+        loadInitialListOfPerson();
+    }
+
+    private void loadInitialListOfPerson(){
+        PersonController controller = new PersonController();
+        refreshPersons(controller.findAllFirstPersonList());
     }
 
     private void onSearchPersons(SearchPersonsEvent searchPersonsEvent){
         String pattern = searchPersonsEvent.getPattern();
-        if(pattern.isEmpty()){
+        if(pattern.isEmpty() || pattern == null){
             personsOutput.clear();
             phonesOutput.clear();
             phoneInput.setPhoneAddedButton(false);
+            loadInitialListOfPerson();
             return;
         }
         List<Person> persons = findPersonByNamePattern(pattern);

@@ -1,5 +1,7 @@
 package agendanew.persistence;
 
+import agendanew.domain.Person;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -23,6 +25,7 @@ public class PersonDB {
             PersonVO person6 = new PersonVO(6, "Iglesias", "Entenza", "Graciela");
             PersonVO person7 = new PersonVO(7, "Reboreda", "Barcia", "José Manuel");
             PersonVO person8 = new PersonVO(8, "Reboreda", "Iglesias", "Carla");
+            PersonVO person9 = new PersonVO(9, "Abal", "Cernuda", "Evaristo");
             personsListInit.add(person1);
             personsListInit.add(person2);
             personsListInit.add(person3);
@@ -31,7 +34,16 @@ public class PersonDB {
             personsListInit.add(person6);
             personsListInit.add(person7);
             personsListInit.add(person8);
+            personsListInit.add(person9);
         }
+    }
+
+    public List<PersonVO> findAllFirstPersonList(){
+        List<PersonVO> orderedFirstPersonsList = personsListInit
+                .stream()
+                .sorted(Comparator.comparing(PersonVO::getLastName1)).collect(Collectors.toList());
+
+        return orderedFirstPersonsList;
     }
 
     public Integer createPerson(PersonVO personVO){

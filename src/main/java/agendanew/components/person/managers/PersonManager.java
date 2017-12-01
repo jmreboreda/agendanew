@@ -1,4 +1,4 @@
-package agendanew.managers;
+package agendanew.components.person.managers;
 
 import agendanew.domain.Person;
 import agendanew.persistence.PersonVO;
@@ -15,6 +15,10 @@ public class PersonManager {
     public PersonManager() {
     }
 
+    public List<Person> findAllFirstPersonList(){
+        return new PersonVO().findAllFirstPersonList();
+    }
+
     public Integer createPerson(Person person){
         PersonVO personVO = new PersonVO();
         personVO.setLastName1(person.getLastName1());
@@ -25,7 +29,6 @@ public class PersonManager {
 
         return personId;
     }
-
 
     public void removePerson(Person person){
         PersonVO personVO = new PersonVO();

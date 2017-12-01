@@ -2,7 +2,7 @@ package agendanew.components.phone.controllers;
 
 import agendanew.domain.Person;
 import agendanew.domain.Phone;
-import agendanew.managers.PhoneManager;
+import agendanew.components.phone.managers.PhoneManager;
 
 import java.util.List;
 

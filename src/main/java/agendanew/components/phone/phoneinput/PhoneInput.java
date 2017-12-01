@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class PhoneInput extends GridPane {
 
     private static final Logger logger = Logger.getLogger(PhoneInput.class.getSimpleName());
-    private static final String PHONE_INPUT_FXML = "/agendanew/phoneinput.fxml";
+    private static final String PHONE_INPUT_FXML = "/agendanew_fxml/phoneinput.fxml";
 
     @FXML
     private TextField phoneNumberTextField;

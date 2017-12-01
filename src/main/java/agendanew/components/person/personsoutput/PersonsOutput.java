@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class PersonsOutput extends AnchorPane {
 
     private static final Logger logger = Logger.getLogger(PersonsOutput.class.getSimpleName());
-    private static final String PERSONS_OUTPUT_FXML = "/agendanew/personsoutput.fxml";
+    private static final String PERSONS_OUTPUT_FXML = "/agendanew_fxml/personsoutput.fxml";
 
     private EventHandler<SelectPersonEvent> selectPersonEventEventHandler;
     @FXML

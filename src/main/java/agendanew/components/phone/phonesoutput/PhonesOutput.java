@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class PhonesOutput extends AnchorPane {
 
     private static final Logger logger = Logger.getLogger(PhonesOutput.class.getSimpleName());
-    private static final String PHONES_OUTPUT_FXML = "/agendanew/phonesoutput.fxml";
+    private static final String PHONES_OUTPUT_FXML = "/agendanew_fxml/phonesoutput.fxml";
 
     @FXML
     private TextField phonesTFLabel;
