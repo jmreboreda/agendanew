@@ -65,9 +65,8 @@ public class PersonVO {
     public Integer createPerson(PersonVO personVO){
 
         PersonDB db = new PersonDB();
-        Integer personId = db.createPerson(personVO);
 
-        return personId;
+        return db.createPerson(personVO);
     }
 
     public void removePerson(PersonVO personVO) {
@@ -80,8 +79,6 @@ public class PersonVO {
         PersonDB db = new PersonDB();
         db.createPersonDB();
 
-        List<PersonVO> personVOList = db.findPersonByNamePattern(pattern);
-
-        return personVOList;
+        return db.findPersonByNamePattern(pattern);
     }
 }

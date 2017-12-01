@@ -1,10 +1,7 @@
-package agendanew.events;
+package agendanew.components.personssearch.events;
 
-import agendanew.bussines.Person;
 import javafx.event.Event;
 import javafx.event.EventType;
-
-import java.util.List;
 
 public class SearchPersonsEvent extends Event {
 

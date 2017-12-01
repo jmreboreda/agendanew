@@ -1,7 +1,7 @@
 package agendanew.components.personssearch;
 
 import agendanew.components.ViewLoader;
-import agendanew.events.SearchPersonsEvent;
+import agendanew.components.personssearch.events.SearchPersonsEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

@@ -1,7 +1,7 @@
 package agendanew.managers;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.domain.Person;
+import agendanew.domain.Phone;
 import agendanew.persistence.PhoneVO;
 
 import java.util.ArrayList;

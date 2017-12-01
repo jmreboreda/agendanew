@@ -1,9 +1,9 @@
 package agendanew.components.phoneinput;
 
-import agendanew.bussines.Phone;
-import agendanew.events.SavePhoneEvent;
-import agendanew.events.SelectPersonEvent;
+import agendanew.domain.Phone;
+import agendanew.components.phoneinput.events.SavePhoneEvent;
 import agendanew.utilities.Message;
+import agendanew.utilities.Utilities;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,7 +39,7 @@ public class PhoneInput extends GridPane {
     }
 
     private void onAddPhone(MouseEvent event){
-        if(isCorrectLength(phoneNumberTextField.getText())) {
+        if(isACorrectNumPhone(phoneNumberTextField.getText())) {
             Phone phone = new Phone(null, phoneNumberTextField.getText(), getPersonIdToSavePhone());
             SavePhoneEvent savePhoneEvent = new SavePhoneEvent(phone);
             savePhoneEventEventHandler.handle(savePhoneEvent);
@@ -63,12 +63,12 @@ public class PhoneInput extends GridPane {
         this.savePhoneEventEventHandler = savePhoneEventEventHandler;
     }
 
-    private Boolean isCorrectLength(String phone){
-        if(phone.length() == 9){
-         return true;
+    private Boolean isACorrectNumPhone(String numPhone){
+        if(Utilities.isNumeric(numPhone) && numPhone.length() == 9){
+            return true;
         }
         Message message = new Message();
-        message.warningMessage("Información del sistema","Longitud incorrecta del número de teléfono.");
+        message.warningMessage("Información del sistema","El número de teléfono introducido no es correcto.");
         return false;
     }
 

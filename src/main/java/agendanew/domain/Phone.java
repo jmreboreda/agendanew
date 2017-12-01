@@ -1,4 +1,4 @@
-package agendanew.bussines;
+package agendanew.domain;
 
 public class Phone {
 

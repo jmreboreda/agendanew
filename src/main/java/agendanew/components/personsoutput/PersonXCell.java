@@ -1,19 +1,15 @@
 package agendanew.components.personsoutput;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
-import agendanew.events.RemovePersonEvent;
-import agendanew.events.RemovePhoneEvent;
+import agendanew.domain.Person;
+import agendanew.components.personsoutput.events.RemovePersonEvent;
 import agendanew.utilities.Message;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.event.ActionEvent;
 
 public class PersonXCell extends ListCell<Person> {
 

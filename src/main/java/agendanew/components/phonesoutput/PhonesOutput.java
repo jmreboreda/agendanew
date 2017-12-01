@@ -1,12 +1,10 @@
 package agendanew.components.phonesoutput;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.domain.Phone;
 import agendanew.components.ViewLoader;
-import agendanew.controllers.PhoneController;
-import agendanew.events.RemovePhoneEvent;
-import agendanew.events.SelectPersonEvent;
-import agendanew.events.ShowPhonesEvent;
+import agendanew.components.phoneinput.events.RemovePhoneEvent;
+import agendanew.components.personsoutput.events.SelectPersonEvent;
+import agendanew.components.phonesoutput.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -18,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 
 public class PhonesOutput extends AnchorPane {

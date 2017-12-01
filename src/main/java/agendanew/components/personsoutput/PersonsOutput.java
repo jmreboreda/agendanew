@@ -1,12 +1,8 @@
 package agendanew.components.personsoutput;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
-import agendanew.controllers.PhoneController;
-import agendanew.events.RemovePersonEvent;
-import agendanew.events.RemovePhoneEvent;
-import agendanew.events.SelectPersonEvent;
-import agendanew.events.ShowPhonesEvent;
+import agendanew.domain.Person;
+import agendanew.components.personsoutput.events.RemovePersonEvent;
+import agendanew.components.personsoutput.events.SelectPersonEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -15,7 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import agendanew.components.ViewLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 

@@ -1,7 +1,7 @@
 package agendanew.components.phonesoutput;
 
-import agendanew.bussines.Phone;
-import agendanew.events.RemovePhoneEvent;
+import agendanew.domain.Phone;
+import agendanew.components.phoneinput.events.RemovePhoneEvent;
 import agendanew.utilities.Message;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

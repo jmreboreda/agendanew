@@ -1,7 +1,6 @@
-package agendanew.events;
+package agendanew.components.personsoutput.events;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.domain.Person;
 import javafx.event.Event;
 import javafx.event.EventType;
 

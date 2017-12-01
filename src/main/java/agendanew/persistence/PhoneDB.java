@@ -1,10 +1,7 @@
 package agendanew.persistence;
 
-import agendanew.bussines.Person;
+import agendanew.domain.Person;
 import agendanew.utilities.Message;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.util.ArrayList;
 import java.util.List;

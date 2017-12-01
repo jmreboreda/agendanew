@@ -1,10 +1,8 @@
 package agendanew.controllers;
 
-import agendanew.bussines.Person;
+import agendanew.domain.Person;
 import agendanew.managers.PersonManager;
-import agendanew.persistence.PersonVO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PersonController {

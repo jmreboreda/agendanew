@@ -1,21 +1,24 @@
 package agendanew.controllers;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.domain.Person;
+import agendanew.domain.Phone;
 import agendanew.components.ViewLoader;
 import agendanew.components.personinput.PersonInput;
+import agendanew.components.personsoutput.events.RemovePersonEvent;
+import agendanew.components.personsoutput.events.SelectPersonEvent;
+import agendanew.components.personssearch.events.SearchPersonsEvent;
+import agendanew.components.phoneinput.events.RemovePhoneEvent;
+import agendanew.components.phoneinput.events.SavePhoneEvent;
 import agendanew.components.personsoutput.PersonsOutput;
 import agendanew.components.personssearch.PersonsSearch;
 import agendanew.components.phoneinput.PhoneInput;
 import agendanew.components.phonesoutput.PhoneXCell;
 import agendanew.components.phonesoutput.PhonesOutput;
-import agendanew.events.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 

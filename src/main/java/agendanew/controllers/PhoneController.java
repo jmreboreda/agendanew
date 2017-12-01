@@ -1,7 +1,7 @@
 package agendanew.controllers;
 
-import agendanew.bussines.Person;
-import agendanew.bussines.Phone;
+import agendanew.domain.Person;
+import agendanew.domain.Phone;
 import agendanew.managers.PhoneManager;
 
 import java.util.List;

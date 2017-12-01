@@ -15,6 +15,7 @@
       <element id="archive" name="agendanew.jar">
         <element id="module-output" name="agendanew" />
       </element>
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

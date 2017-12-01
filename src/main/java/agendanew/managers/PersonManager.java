@@ -1,6 +1,6 @@
 package agendanew.managers;
 
-import agendanew.bussines.Person;
+import agendanew.domain.Person;
 import agendanew.persistence.PersonVO;
 
 import java.util.ArrayList;
