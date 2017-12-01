@@ -1,5 +1,8 @@
 package agendanew.persistence;
 
+import agendanew.databases.PersonDB;
+import agendanew.domain.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +63,21 @@ public class PersonVO {
 
     public void setPersonsListInit(List<PersonVO> personsListInit) {
         this.personsListInit = personsListInit;
+    }
+
+    public List<Person> findAllFirstPersonList(){
+        PersonDB db = new PersonDB();
+        List<PersonVO> personVOList = db.findAllFirstPersonList();
+        List<Person> personList = new ArrayList<>();
+        for(PersonVO personVO : personVOList){
+            Person person = new Person(
+                    personVO.getId(),
+                    personVO.getLastName1(),
+                    personVO.getLastName2(),
+                    personVO.getName());
+            personList.add(person);
+        }
+        return personList;
     }
 
     public Integer createPerson(PersonVO personVO){

@@ -2,7 +2,6 @@ package agendanew.components;
 
 import agendanew.components.person.controllers.PersonController;
 import agendanew.components.phone.controllers.PhoneController;
-import agendanew.databases.PersonDataBase;
 import agendanew.domain.Person;
 import agendanew.domain.Phone;
 import agendanew.components.person.personinput.PersonInput;
@@ -59,7 +58,6 @@ public class MainController extends HBox {
         personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
         phonesOutput.setOnRemovePhone(this::onRemovePhone);
-        new PersonDataBase();
         loadInitialListOfPerson();
     }
 

@@ -1,6 +1,7 @@
-package agendanew.persistence;
+package agendanew.databases;
 
 import agendanew.domain.Person;
+import agendanew.persistence.PersonVO;
 
 import java.util.ArrayList;
 import java.util.Comparator;
