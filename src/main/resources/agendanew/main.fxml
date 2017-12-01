@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import agendanew.components.personinput.PersonInput?>
-<?import agendanew.components.personsoutput.PersonsOutput?>
-<?import agendanew.components.personssearch.PersonsSearch?>
-<?import agendanew.components.phoneinput.PhoneInput?>
-<?import agendanew.components.phonesoutput.PhonesOutput?>
+<?import agendanew.components.person.personinput.PersonInput?>
+<?import agendanew.components.person.personsoutput.PersonsOutput?>
+<?import agendanew.components.person.personssearch.PersonsSearch?>
+<?import agendanew.components.phone.phoneinput.PhoneInput?>
+<?import agendanew.components.phone.phonesoutput.PhonesOutput?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 

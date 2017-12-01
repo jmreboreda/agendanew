@@ -1,10 +1,10 @@
-package agendanew.components.phonesoutput;
+package agendanew.components.phone.phonesoutput;
 
 import agendanew.domain.Phone;
 import agendanew.components.ViewLoader;
-import agendanew.components.phoneinput.events.RemovePhoneEvent;
-import agendanew.components.personsoutput.events.SelectPersonEvent;
-import agendanew.components.phonesoutput.events.ShowPhonesEvent;
+import agendanew.components.phone.phoneinput.events.RemovePhoneEvent;
+import agendanew.components.person.personsoutput.events.SelectPersonEvent;
+import agendanew.components.phone.phonesoutput.events.ShowPhonesEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

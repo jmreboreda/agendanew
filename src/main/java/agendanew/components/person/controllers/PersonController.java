@@ -1,4 +1,4 @@
-package agendanew.controllers;
+package agendanew.components.person.controllers;
 
 import agendanew.domain.Person;
 import agendanew.managers.PersonManager;

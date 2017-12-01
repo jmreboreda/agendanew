@@ -4,7 +4,7 @@ import agendanew.components.BorderedTitledPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import agendanew.controllers.MainController;
+import agendanew.components.MainController;
 
 public class App extends Application {
 

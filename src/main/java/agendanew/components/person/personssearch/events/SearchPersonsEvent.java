@@ -1,4 +1,4 @@
-package agendanew.components.personssearch.events;
+package agendanew.components.person.personssearch.events;
 
 import javafx.event.Event;
 import javafx.event.EventType;

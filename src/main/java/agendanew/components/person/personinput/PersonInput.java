@@ -1,9 +1,9 @@
-package agendanew.components.personinput;
+package agendanew.components.person.personinput;
 
 import agendanew.domain.Person;
 import agendanew.components.ViewLoader;
-import agendanew.controllers.PersonController;
-import agendanew.components.personssearch.events.SearchPersonsEvent;
+import agendanew.components.person.controllers.PersonController;
+import agendanew.components.person.personssearch.events.SearchPersonsEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

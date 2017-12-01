@@ -1,4 +1,4 @@
-package agendanew.components.phoneinput.events;
+package agendanew.components.phone.phoneinput.events;
 
 import agendanew.domain.Phone;
 import javafx.event.Event;

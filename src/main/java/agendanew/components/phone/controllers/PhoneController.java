@@ -1,4 +1,4 @@
-package agendanew.controllers;
+package agendanew.components.phone.controllers;
 
 import agendanew.domain.Person;
 import agendanew.domain.Phone;

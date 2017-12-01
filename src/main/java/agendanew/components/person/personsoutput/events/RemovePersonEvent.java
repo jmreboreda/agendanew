@@ -1,4 +1,4 @@
-package agendanew.components.personsoutput.events;
+package agendanew.components.person.personsoutput.events;
 
 import agendanew.domain.Person;
 import javafx.event.Event;

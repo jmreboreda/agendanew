@@ -1,8 +1,8 @@
-package agendanew.components.personsoutput;
+package agendanew.components.person.personsoutput;
 
 import agendanew.domain.Person;
-import agendanew.components.personsoutput.events.RemovePersonEvent;
-import agendanew.components.personsoutput.events.SelectPersonEvent;
+import agendanew.components.person.personsoutput.events.RemovePersonEvent;
+import agendanew.components.person.personsoutput.events.SelectPersonEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

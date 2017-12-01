@@ -1,7 +1,7 @@
-package agendanew.components.phoneinput;
+package agendanew.components.phone.phoneinput;
 
 import agendanew.domain.Phone;
-import agendanew.components.phoneinput.events.SavePhoneEvent;
+import agendanew.components.phone.phoneinput.events.SavePhoneEvent;
 import agendanew.utilities.Message;
 import agendanew.utilities.Utilities;
 import javafx.application.Platform;

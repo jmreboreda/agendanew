@@ -1,7 +1,7 @@
-package agendanew.components.personsoutput;
+package agendanew.components.person.personsoutput;
 
 import agendanew.domain.Person;
-import agendanew.components.personsoutput.events.RemovePersonEvent;
+import agendanew.components.person.personsoutput.events.RemovePersonEvent;
 import agendanew.utilities.Message;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
