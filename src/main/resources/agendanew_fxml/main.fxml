@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import agendanew.components.person.personinput.PersonInput?>
+<?import agendanew.components.person.personsoutput.PersonsOutput?>
+<?import agendanew.components.person.personssearch.PersonsSearch?>
+<?import agendanew.components.phone.phoneinput.PhoneInput?>
+<?import agendanew.components.phone.phonesoutput.PhonesOutput?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <PersonsSearch fx:id="personsSearch" />
+         <PersonsOutput fx:id="personsOutput" />
+         <PersonInput fx:id="personInput" />
+      </VBox>
+      <VBox>
+            <PhonesOutput fx:id="phonesOutput" />
+            <PhoneInput fx:id="phoneInput" />
+      </VBox>
+   </children>
+</fx:root>
