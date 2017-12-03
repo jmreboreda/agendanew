@@ -20,8 +20,10 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class MainController extends HBox {
 
@@ -58,21 +60,24 @@ public class MainController extends HBox {
         personInput.setOnAddPerson(this::onSearchPersons);
         phoneInput.setOnSavePhone(this::onSavePhone);
         phonesOutput.setOnRemovePhone(this::onRemovePhone);
-        loadInitialListOfPerson();
+        showInitialListOfPerson();
     }
 
-    private void loadInitialListOfPerson(){
+    private void showInitialListOfPerson(){
         PersonController controller = new PersonController();
-        refreshPersons(controller.findAllFirstPersonList());
+        refreshPersons(controller.findAllPersons());
     }
 
     private void onSearchPersons(SearchPersonsEvent searchPersonsEvent){
         String pattern = searchPersonsEvent.getPattern();
-        if(pattern.isEmpty() || pattern == null){
+        if(pattern == null){
+            pattern = "";
+        }
+        if(pattern.isEmpty()){
             personsOutput.clear();
             phonesOutput.clear();
             phoneInput.setPhoneAddedButton(false);
-            loadInitialListOfPerson();
+            showInitialListOfPerson();
             return;
         }
         List<Person> persons = findPersonByNamePattern(pattern);
@@ -113,7 +118,6 @@ public class MainController extends HBox {
 
         PhoneController phoneController = new PhoneController();
         phoneController.removeAllPhonesOfPerson(person);
-        //refreshPhones(new ArrayList<Phone>());
         phonesOutput.clear();
     }
 
@@ -140,7 +144,10 @@ public class MainController extends HBox {
         if(persons.isEmpty()){
             personsOutput.clear();
         }
-        personsOutput.refresh(persons);
+        List<Person> orderedPersonsList = persons
+                .stream()
+                .sorted(Comparator.comparing(Person::getLastName1)).collect(Collectors.toList());
+        personsOutput.refresh(orderedPersonsList);
         phonesOutput.clear();
     }
 

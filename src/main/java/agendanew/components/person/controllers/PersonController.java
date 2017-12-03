@@ -12,19 +12,19 @@ public class PersonController {
     public PersonController() {
     }
 
-    public List<Person> findAllFirstPersonList(){
-        return new PersonManager().findAllFirstPersonList();
+    public List<Person> findAllPersons(){
+        return new PersonManager().findAllPersons();
     }
 
     public Integer createPerson(Person person){
-        Integer personId = manager.createPerson(person);
+        Integer personId = manager.create(person);
 
         return personId;
     }
 
     public void removePerson(Person person){
         PersonManager manager = new PersonManager();
-        manager.removePerson(person);
+        manager.remove(person);
     }
 
     public List<Person> findPersonByNamePattern(String pattern){

@@ -18,6 +18,7 @@ public class PhoneInput extends GridPane {
 
     private static final Logger logger = Logger.getLogger(PhoneInput.class.getSimpleName());
     private static final String PHONE_INPUT_FXML = "/agendanew_fxml/phoneinput.fxml";
+    private static final Integer NUMBER_OF_DIGITS_OF_A_PHONE_NUMBER = 9;
 
     @FXML
     private TextField phoneNumberTextField;
@@ -64,7 +65,7 @@ public class PhoneInput extends GridPane {
     }
 
     private Boolean isACorrectNumPhone(String numPhone){
-        if(Utilities.isNumeric(numPhone) && numPhone.length() == 9){
+        if(Utilities.isNumeric(numPhone) && numPhone.length() == NUMBER_OF_DIGITS_OF_A_PHONE_NUMBER){
             return true;
         }
         Message message = new Message();

@@ -38,6 +38,8 @@ public class Phone {
 
     @Override
     public String toString(){
-        return phoneNumber;
+        return this.getPhoneNumber().substring(0,3)
+                + " " + this.getPhoneNumber().substring(3,6)
+                + " " + this.getPhoneNumber().substring(6,9);
     }
 }
