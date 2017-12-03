@@ -12,7 +12,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        this.primaryStage = primaryStage;
+        App.primaryStage = primaryStage;
         final MainController mainController = new MainController();
         BorderedTitledPane btp = new BorderedTitledPane("Agenda telefónica", mainController);
         final Scene scene = new Scene(btp);

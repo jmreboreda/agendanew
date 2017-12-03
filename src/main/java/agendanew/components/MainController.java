@@ -99,7 +99,7 @@ public class MainController extends HBox {
         Phone phone = savePhoneEvent.getPhone();
         if(!phone.getPhoneNumber().isEmpty()) {
             PhoneController controller = new PhoneController();
-            controller.createPhone(phone);
+            controller.create(phone);
             List<Phone> phones = findPhonesByPersonId(phone.getPersonId());
             refreshPhones(phones);
         }

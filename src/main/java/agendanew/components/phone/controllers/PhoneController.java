@@ -13,8 +13,8 @@ public class PhoneController {
     public PhoneController() {
     }
 
-    public Integer createPhone(Phone phone){
-        Integer phoneId = manager.createPhone(phone);
+    public Integer create(Phone phone){
+        Integer phoneId = manager.create(phone);
 
         return phoneId;
     }
