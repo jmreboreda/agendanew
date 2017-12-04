@@ -1,6 +1,7 @@
 package agendanew;
 
 import agendanew.components.BorderedTitledPane;
+import agendanew.utilities.EmailSenderService;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -24,8 +25,13 @@ public class App extends Application {
         primaryStage.setMinWidth(610);
         primaryStage.setMinHeight(625);
 
+//        EmailSenderService sender = new EmailSenderService();
+//        sender.sendEmail("jm@gm.com","[De GM] - Nueva prueba","Esto es el texto del correo-e");
+
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
     }
 
     public static Stage getStage(){
