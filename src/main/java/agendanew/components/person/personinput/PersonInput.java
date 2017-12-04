@@ -34,6 +34,19 @@ public class PersonInput extends GridPane{
     public PersonInput() {
         ViewLoader.load(this, PERSON_INPUT_FXML);
         addPersonButton.setOnAction(this::onAddPerson);
+        lastName1.setOnAction(this::toNextField);
+        lastName2.setOnAction(this::toNextField);
+        name.setOnAction(this::toNextField);
+    }
+
+    private void toNextField(ActionEvent actionEvent){
+        if(actionEvent.getSource() == lastName1){
+            lastName2.requestFocus();
+        }else if(actionEvent.getSource() == lastName2){
+            name.requestFocus();
+        }else{
+            lastName1.requestFocus();
+        }
     }
 
     private void onAddPerson(ActionEvent event){
@@ -88,4 +101,5 @@ public class PersonInput extends GridPane{
     public void setOnAddPerson(EventHandler<SearchPersonsEvent> searchPersonsEventEventHandler){
         this.searchPersonsEventEventHandler = searchPersonsEventEventHandler;
     }
+
 }

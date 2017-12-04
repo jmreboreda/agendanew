@@ -31,7 +31,7 @@ public class PersonManager {
         return personList;
     }
 
-    public Integer create(Person person){
+    public Integer createPerson(Person person){
         PersonVO personVO = new PersonVO();
         personVO.setLastName1(person.getLastName1());
         personVO.setLastName2(person.getLastName2());
@@ -44,7 +44,7 @@ public class PersonManager {
         return personId;
     }
 
-    public void remove(Person person){
+    public void removePerson(Person person){
         PersonVO personVO = new PersonVO();
         personVO.setId(person.getId());
         personVO.setLastName1(person.getLastName1());

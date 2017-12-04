@@ -67,7 +67,7 @@ public class PersonsOutput extends AnchorPane {
         this.removePersonEventEventHandler = removePersonEventEventHandler;
     }
 
-    public Person getSelectedPerson() {
-        return personWhoMeetNamePattern.getSelectionModel().getSelectedItem();
-    }
+//    public Person getSelectedPerson() {
+//        return personWhoMeetNamePattern.getSelectionModel().getSelectedItem();
+//    }
 }

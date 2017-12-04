@@ -14,26 +14,20 @@ public class PhoneController {
     }
 
     public Integer create(Phone phone){
-        Integer phoneId = manager.create(phone);
-
-        return phoneId;
+        return manager.create(phone);
     }
 
-    public void removeAllPhonesOfPerson(Person person){
-        PhoneManager manager = new PhoneManager();
-        manager.removeAllPhonesOfPerson(person);
+    public void removeAllPhonesOfPerson(Integer personId){
+        manager.removeAllPhonesOfPerson(personId);
     }
 
 
 
     public void removePhone(Phone phone){
-        PhoneManager manager = new PhoneManager();
         manager.removePhone(phone);
     }
 
     public List<Phone> findPhonesByPersonId(Integer id){
-        PhoneManager manager = new PhoneManager();
-
         return manager.findPhonesByPersonId(id);
     }
 }

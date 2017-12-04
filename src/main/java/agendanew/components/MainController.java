@@ -30,6 +30,9 @@ public class MainController extends HBox {
     private static final Logger logger = Logger.getLogger(MainController.class.getSimpleName());
     private static final String MAIN_FXML = "/agendanew_fxml/main.fxml";
 
+    private PersonController personController = new PersonController();
+    private PhoneController phoneController = new PhoneController();
+
     public final Parent parent;
 
     @FXML
@@ -64,8 +67,8 @@ public class MainController extends HBox {
     }
 
     private void showInitialListOfPerson(){
-        PersonController controller = new PersonController();
-        refreshPersons(controller.findAllPersons());
+        personController = new PersonController();
+        refreshPersons(personController.findAllPersons());
     }
 
     private void onSearchPersons(SearchPersonsEvent searchPersonsEvent){
@@ -107,37 +110,27 @@ public class MainController extends HBox {
 
     private void onRemovePhone(RemovePhoneEvent removePhoneEvent){
         Phone phone = removePhoneEvent.getPhone();
-        PhoneController controller = new PhoneController();
-        controller.removePhone(phone);
+        phoneController.removePhone(phone);
     }
 
     private void onRemovePerson(RemovePersonEvent removePersonEvent){
         Person person = removePersonEvent.getPerson();
-        PersonController personController = new PersonController();
         personController.removePerson(person);
 
-        PhoneController phoneController = new PhoneController();
-        phoneController.removeAllPhonesOfPerson(person);
+        phoneController.removeAllPhonesOfPerson(person.getId());
         phonesOutput.clear();
     }
 
     private List<Person> findPersonByNamePattern(String pattern){
-        PersonController controller = new PersonController();
-        List<Person> personList = controller.findPersonByNamePattern(pattern);
-
-        return personList;
+        return personController.findPersonByNamePattern(pattern);
     }
 
     private List<Phone> findPhonesByPersonId(Integer id){
-        PhoneController controller = new PhoneController();
-
-        return controller.findPhonesByPersonId(id);
+        return phoneController.findPhonesByPersonId(id);
     }
 
     private List<Phone> retrievePhones(Person person){
-        PhoneController controller = new PhoneController();
-
-        return controller.findPhonesByPersonId(person.getId());
+        return phoneController.findPhonesByPersonId(person.getId());
     }
 
     private void refreshPersons(List<Person> persons) {

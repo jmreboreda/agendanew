@@ -12,7 +12,6 @@ import java.util.Objects;
 
 public class PhoneManager {
 
-    private List<Person> personsListInit = new ArrayList<>();
     private static List<PhoneVO> phonesListInit = new ArrayList<>();
     private static Integer phoneId;
 
@@ -62,7 +61,6 @@ public class PhoneManager {
     }
 
     public void removePhone(Phone phone){
-//        phonesListInit.remove(phoneVO);
         for(PhoneVO phVO : phonesListInit ){
             if(Objects.equals(phVO.getPhoneNumber(), phone.getPhoneNumber()) &&
                     Objects.equals(phVO.getPersonId(), phone.getPersonId())){
@@ -70,13 +68,11 @@ public class PhoneManager {
                 break;
             }
         }
-//        PhoneVO phVO = findPhone(phoneVO);
-//        phonesListInit.remove(phVO);
     }
 
-    public void removeAllPhonesOfPerson(Person person){
+    public void removeAllPhonesOfPerson(Integer personId){
         for(PhoneVO phoneVO : phonesListInit){
-            if(Objects.equals(phoneVO.getPersonId(), person.getId())){
+            if(Objects.equals(phoneVO.getPersonId(), personId)){
                 phoneVO.setPersonId(-1);
             }
         }

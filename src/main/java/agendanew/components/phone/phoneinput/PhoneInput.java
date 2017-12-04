@@ -40,7 +40,7 @@ public class PhoneInput extends GridPane {
     }
 
     private void onAddPhone(MouseEvent event){
-        if(isACorrectNumPhone(phoneNumberTextField.getText())) {
+        if(!phoneNumberTextField.getText().isEmpty() && isACorrectNumPhone(phoneNumberTextField.getText())) {
             Phone phone = new Phone(null, phoneNumberTextField.getText(), getPersonIdToSavePhone());
             SavePhoneEvent savePhoneEvent = new SavePhoneEvent(phone);
             savePhoneEventEventHandler.handle(savePhoneEvent);
@@ -69,12 +69,15 @@ public class PhoneInput extends GridPane {
             return true;
         }
         Message message = new Message();
-        message.warningMessage("Información del sistema","El número de teléfono introducido no es correcto.");
+        message.warningMessage("Información del sistema","El número de teléfono introducido no es válido.");
         return false;
     }
 
     private void onExit(MouseEvent event){
-        Platform.exit();
-        System.exit(0);
+        Message message = new Message();
+        if(message.confirmationMessage("Información del sistema","¿Desea salir de la agenda?")) {
+            Platform.exit();
+            System.exit(0);
+        }
     }
 }
